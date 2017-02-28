@@ -1,0 +1,561 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1168F49D1E66124000055E3D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1168F49C1E66124000055E3D /* AppDelegate.swift */; };
+		1168F4A01E66124000055E3D /* FireballTracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1168F49E1E66124000055E3D /* FireballTracker.xcdatamodeld */; };
+		1168F4A21E66124000055E3D /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1168F4A11E66124000055E3D /* MasterViewController.swift */; };
+		1168F4A41E66124000055E3D /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1168F4A31E66124000055E3D /* DetailViewController.swift */; };
+		1168F4A71E66124000055E3D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1168F4A51E66124000055E3D /* Main.storyboard */; };
+		1168F4A91E66124000055E3D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1168F4A81E66124000055E3D /* Assets.xcassets */; };
+		1168F4AC1E66124000055E3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1168F4AA1E66124000055E3D /* LaunchScreen.storyboard */; };
+		1168F4B71E66124000055E3D /* FireballTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1168F4B61E66124000055E3D /* FireballTrackerTests.swift */; };
+		1168F4C21E66124000055E3D /* FireballTrackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1168F4C11E66124000055E3D /* FireballTrackerUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		1168F4B31E66124000055E3D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1168F4911E66124000055E3D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1168F4981E66124000055E3D;
+			remoteInfo = FireballTracker;
+		};
+		1168F4BE1E66124000055E3D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1168F4911E66124000055E3D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1168F4981E66124000055E3D;
+			remoteInfo = FireballTracker;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		1168F4991E66124000055E3D /* FireballTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FireballTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1168F49C1E66124000055E3D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		1168F49F1E66124000055E3D /* FireballTracker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FireballTracker.xcdatamodel; sourceTree = "<group>"; };
+		1168F4A11E66124000055E3D /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
+		1168F4A31E66124000055E3D /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		1168F4A61E66124000055E3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		1168F4A81E66124000055E3D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1168F4AB1E66124000055E3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		1168F4AD1E66124000055E3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1168F4B21E66124000055E3D /* FireballTrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FireballTrackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1168F4B61E66124000055E3D /* FireballTrackerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireballTrackerTests.swift; sourceTree = "<group>"; };
+		1168F4B81E66124000055E3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1168F4BD1E66124000055E3D /* FireballTrackerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FireballTrackerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1168F4C11E66124000055E3D /* FireballTrackerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireballTrackerUITests.swift; sourceTree = "<group>"; };
+		1168F4C31E66124000055E3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1168F4961E66124000055E3D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1168F4AF1E66124000055E3D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1168F4BA1E66124000055E3D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1168F4901E66124000055E3D = {
+			isa = PBXGroup;
+			children = (
+				1168F49B1E66124000055E3D /* FireballTracker */,
+				1168F4B51E66124000055E3D /* FireballTrackerTests */,
+				1168F4C01E66124000055E3D /* FireballTrackerUITests */,
+				1168F49A1E66124000055E3D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		1168F49A1E66124000055E3D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1168F4991E66124000055E3D /* FireballTracker.app */,
+				1168F4B21E66124000055E3D /* FireballTrackerTests.xctest */,
+				1168F4BD1E66124000055E3D /* FireballTrackerUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1168F49B1E66124000055E3D /* FireballTracker */ = {
+			isa = PBXGroup;
+			children = (
+				1168F49C1E66124000055E3D /* AppDelegate.swift */,
+				1168F4A11E66124000055E3D /* MasterViewController.swift */,
+				1168F4A31E66124000055E3D /* DetailViewController.swift */,
+				1168F4A51E66124000055E3D /* Main.storyboard */,
+				1168F4A81E66124000055E3D /* Assets.xcassets */,
+				1168F4AA1E66124000055E3D /* LaunchScreen.storyboard */,
+				1168F4AD1E66124000055E3D /* Info.plist */,
+				1168F49E1E66124000055E3D /* FireballTracker.xcdatamodeld */,
+			);
+			path = FireballTracker;
+			sourceTree = "<group>";
+		};
+		1168F4B51E66124000055E3D /* FireballTrackerTests */ = {
+			isa = PBXGroup;
+			children = (
+				1168F4B61E66124000055E3D /* FireballTrackerTests.swift */,
+				1168F4B81E66124000055E3D /* Info.plist */,
+			);
+			path = FireballTrackerTests;
+			sourceTree = "<group>";
+		};
+		1168F4C01E66124000055E3D /* FireballTrackerUITests */ = {
+			isa = PBXGroup;
+			children = (
+				1168F4C11E66124000055E3D /* FireballTrackerUITests.swift */,
+				1168F4C31E66124000055E3D /* Info.plist */,
+			);
+			path = FireballTrackerUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1168F4981E66124000055E3D /* FireballTracker */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1168F4C61E66124000055E3D /* Build configuration list for PBXNativeTarget "FireballTracker" */;
+			buildPhases = (
+				1168F4951E66124000055E3D /* Sources */,
+				1168F4961E66124000055E3D /* Frameworks */,
+				1168F4971E66124000055E3D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FireballTracker;
+			productName = FireballTracker;
+			productReference = 1168F4991E66124000055E3D /* FireballTracker.app */;
+			productType = "com.apple.product-type.application";
+		};
+		1168F4B11E66124000055E3D /* FireballTrackerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1168F4C91E66124000055E3D /* Build configuration list for PBXNativeTarget "FireballTrackerTests" */;
+			buildPhases = (
+				1168F4AE1E66124000055E3D /* Sources */,
+				1168F4AF1E66124000055E3D /* Frameworks */,
+				1168F4B01E66124000055E3D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1168F4B41E66124000055E3D /* PBXTargetDependency */,
+			);
+			name = FireballTrackerTests;
+			productName = FireballTrackerTests;
+			productReference = 1168F4B21E66124000055E3D /* FireballTrackerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		1168F4BC1E66124000055E3D /* FireballTrackerUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1168F4CC1E66124000055E3D /* Build configuration list for PBXNativeTarget "FireballTrackerUITests" */;
+			buildPhases = (
+				1168F4B91E66124000055E3D /* Sources */,
+				1168F4BA1E66124000055E3D /* Frameworks */,
+				1168F4BB1E66124000055E3D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1168F4BF1E66124000055E3D /* PBXTargetDependency */,
+			);
+			name = FireballTrackerUITests;
+			productName = FireballTrackerUITests;
+			productReference = 1168F4BD1E66124000055E3D /* FireballTrackerUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1168F4911E66124000055E3D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0820;
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = "Sean Berry";
+				TargetAttributes = {
+					1168F4981E66124000055E3D = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = PFBHBN6Z3S;
+						ProvisioningStyle = Automatic;
+					};
+					1168F4B11E66124000055E3D = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = PFBHBN6Z3S;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 1168F4981E66124000055E3D;
+					};
+					1168F4BC1E66124000055E3D = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = PFBHBN6Z3S;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 1168F4981E66124000055E3D;
+					};
+				};
+			};
+			buildConfigurationList = 1168F4941E66124000055E3D /* Build configuration list for PBXProject "FireballTracker" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 1168F4901E66124000055E3D;
+			productRefGroup = 1168F49A1E66124000055E3D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1168F4981E66124000055E3D /* FireballTracker */,
+				1168F4B11E66124000055E3D /* FireballTrackerTests */,
+				1168F4BC1E66124000055E3D /* FireballTrackerUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1168F4971E66124000055E3D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1168F4AC1E66124000055E3D /* LaunchScreen.storyboard in Resources */,
+				1168F4A91E66124000055E3D /* Assets.xcassets in Resources */,
+				1168F4A71E66124000055E3D /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1168F4B01E66124000055E3D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1168F4BB1E66124000055E3D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1168F4951E66124000055E3D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1168F49D1E66124000055E3D /* AppDelegate.swift in Sources */,
+				1168F4A01E66124000055E3D /* FireballTracker.xcdatamodeld in Sources */,
+				1168F4A21E66124000055E3D /* MasterViewController.swift in Sources */,
+				1168F4A41E66124000055E3D /* DetailViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1168F4AE1E66124000055E3D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1168F4B71E66124000055E3D /* FireballTrackerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1168F4B91E66124000055E3D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1168F4C21E66124000055E3D /* FireballTrackerUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1168F4B41E66124000055E3D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1168F4981E66124000055E3D /* FireballTracker */;
+			targetProxy = 1168F4B31E66124000055E3D /* PBXContainerItemProxy */;
+		};
+		1168F4BF1E66124000055E3D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1168F4981E66124000055E3D /* FireballTracker */;
+			targetProxy = 1168F4BE1E66124000055E3D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		1168F4A51E66124000055E3D /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1168F4A61E66124000055E3D /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		1168F4AA1E66124000055E3D /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1168F4AB1E66124000055E3D /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1168F4C41E66124000055E3D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		1168F4C51E66124000055E3D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1168F4C71E66124000055E3D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = PFBHBN6Z3S;
+				INFOPLIST_FILE = FireballTracker/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.regularberry.FireballTracker;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		1168F4C81E66124000055E3D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = PFBHBN6Z3S;
+				INFOPLIST_FILE = FireballTracker/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.regularberry.FireballTracker;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		1168F4CA1E66124000055E3D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = PFBHBN6Z3S;
+				INFOPLIST_FILE = FireballTrackerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.regularberry.FireballTrackerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FireballTracker.app/FireballTracker";
+			};
+			name = Debug;
+		};
+		1168F4CB1E66124000055E3D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = PFBHBN6Z3S;
+				INFOPLIST_FILE = FireballTrackerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.regularberry.FireballTrackerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FireballTracker.app/FireballTracker";
+			};
+			name = Release;
+		};
+		1168F4CD1E66124000055E3D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = PFBHBN6Z3S;
+				INFOPLIST_FILE = FireballTrackerUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.regularberry.FireballTrackerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = FireballTracker;
+			};
+			name = Debug;
+		};
+		1168F4CE1E66124000055E3D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = PFBHBN6Z3S;
+				INFOPLIST_FILE = FireballTrackerUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.regularberry.FireballTrackerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = FireballTracker;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1168F4941E66124000055E3D /* Build configuration list for PBXProject "FireballTracker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1168F4C41E66124000055E3D /* Debug */,
+				1168F4C51E66124000055E3D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1168F4C61E66124000055E3D /* Build configuration list for PBXNativeTarget "FireballTracker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1168F4C71E66124000055E3D /* Debug */,
+				1168F4C81E66124000055E3D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1168F4C91E66124000055E3D /* Build configuration list for PBXNativeTarget "FireballTrackerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1168F4CA1E66124000055E3D /* Debug */,
+				1168F4CB1E66124000055E3D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1168F4CC1E66124000055E3D /* Build configuration list for PBXNativeTarget "FireballTrackerUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1168F4CD1E66124000055E3D /* Debug */,
+				1168F4CE1E66124000055E3D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		1168F49E1E66124000055E3D /* FireballTracker.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				1168F49F1E66124000055E3D /* FireballTracker.xcdatamodel */,
+			);
+			currentVersion = 1168F49F1E66124000055E3D /* FireballTracker.xcdatamodel */;
+			path = FireballTracker.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 1168F4911E66124000055E3D /* Project object */;
+}
