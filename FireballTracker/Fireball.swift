@@ -26,7 +26,7 @@ enum LongitudeDirection: String {
 
 struct Fireball {
     let date: Date // GMT
-    let location: CLLocationCoordinate2D
+    var coordinate: CLLocationCoordinate2D
     
     init(json: [String:Any]) throws {        
         guard let dateStr = json["date"] as? String else {
@@ -81,7 +81,7 @@ struct Fireball {
         }
         
         self.date = date
-        self.location = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+        self.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
     }
     
 }

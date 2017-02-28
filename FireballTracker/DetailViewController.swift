@@ -7,21 +7,37 @@
 //
 
 import UIKit
+import MapKit
 
-class DetailViewController: UIViewController {
+class DetailViewController: UIViewController, MKMapViewDelegate {
 
-    @IBOutlet weak var detailDescriptionLabel: UILabel!
+    @IBOutlet weak var mapView: MKMapView!
     var fireball: Fireball?
 
     func configureView() {
         if let fireball = fireball {
-            detailDescriptionLabel.text = "\(fireball.location)"
+            mapView.region = MKCoordinateRegionForMapRect(MKMapRectWorld)
+            mapView.centerCoordinate = fireball.coordinate
+            let point = MKPointAnnotation()
+            point.coordinate = fireball.coordinate
+            mapView.addAnnotation(point)
+            mapView.delegate = self
         }
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         configureView()
+    }
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        var view = mapView.dequeueReusableAnnotationView(withIdentifier: "Fireball")
+        
+        if view == nil {
+            view = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "Fireball")
+        }
+        view?.annotation = annotation
+        return view
     }
 }
 
