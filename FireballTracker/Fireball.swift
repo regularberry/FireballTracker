@@ -28,9 +28,7 @@ struct Fireball {
     let date: Date // GMT
     let location: CLLocationCoordinate2D
     
-    init(json: [String:Any]) throws {
-        print("dict: \(json)")
-        
+    init(json: [String:Any]) throws {        
         guard let dateStr = json["date"] as? String else {
             throw JSONError.missing("Date")
         }

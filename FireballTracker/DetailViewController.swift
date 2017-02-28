@@ -11,8 +11,12 @@ import UIKit
 class DetailViewController: UIViewController {
 
     @IBOutlet weak var detailDescriptionLabel: UILabel!
+    var fireball: Fireball?
 
     func configureView() {
+        if let fireball = fireball {
+            detailDescriptionLabel.text = "\(fireball.location)"
+        }
     }
 
     override func viewDidLoad() {
