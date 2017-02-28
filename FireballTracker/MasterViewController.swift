@@ -10,9 +10,20 @@ import UIKit
 import CoreData
 
 class MasterViewController: UITableViewController {
+    
+    let fireballApi = FireballApi()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        fireballApi.getFireballs(completion: {(fireballs, error) in
+            guard error == nil else {
+                print("Failed to get fireballs: \(error!)")
+                return
+            }
+            
+            print("Received fireballs: \(fireballs)")
+        })
     }
 
     override func viewWillAppear(_ animated: Bool) {
