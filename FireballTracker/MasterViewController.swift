@@ -21,6 +21,9 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
         super.viewDidLoad()
         setupFetchedResultsController()
         
+        refreshControl = UIRefreshControl()
+        refreshControl!.addTarget(self, action: #selector(MasterViewController.refreshData), for: .valueChanged)
+        
         if noFireballs() {
             refreshData()
         }
@@ -50,6 +53,9 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
     
     func refreshData() {
         fireballApi.getFireballs(completion: { (jsonFireballs, error) in
+            
+            self.refreshControl?.endRefreshing()
+            
             guard error == nil else {
                 print(error!.localizedDescription)
                 return
