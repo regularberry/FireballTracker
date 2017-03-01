@@ -9,31 +9,65 @@
 import UIKit
 import CoreData
 
-class MasterViewController: UITableViewController {
+class MasterViewController: UITableViewController, NSFetchedResultsControllerDelegate {
+    
+    lazy var dataManager: FireballDataManager = FireballDataManager()
+    var fetchedResultsController: NSFetchedResultsController<FireballMO>!
     
     let fireballApi = FireballApi()
-    var fireballs: [Fireball] = []
+    var fireballs: [FireballMO] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupFetchedResultsController()
         
-        fireballApi.getFireballs(completion: {(fireballs, error) in
+        if noFireballs() {
+            refreshData()
+        }
+    }
+    
+    func noFireballs() -> Bool {
+        guard let fetched = fetchedResultsController.fetchedObjects else {
+            print("No fireballs? We haven't tried to fetch them yet.")
+            return false
+        }
+        return fetched.count == 0
+    }
+    
+    func setupFetchedResultsController() {
+        let fetch = NSFetchRequest<FireballMO>(entityName: "Fireball")
+        fetch.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
+        
+        self.fetchedResultsController = NSFetchedResultsController(fetchRequest: fetch, managedObjectContext: dataManager.container.viewContext, sectionNameKeyPath: nil, cacheName: nil)
+        self.fetchedResultsController.delegate = self
+        
+        do {
+            try self.fetchedResultsController.performFetch()
+        } catch let error {
+            print(error.localizedDescription)
+        }
+    }
+    
+    func refreshData() {
+        fireballApi.getFireballs(completion: { (jsonFireballs, error) in
             guard error == nil else {
-                print("Failed to get fireballs: \(error!)")
+                print(error!.localizedDescription)
                 return
             }
             
-            self.fireballs = fireballs
-            self.tableView.reloadData()
+            guard jsonFireballs.count > 0 else {
+                return
+            }
+            
+            self.dataManager.replaceAllFireballs(with: jsonFireballs)
         })
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetail" {
             if let indexPath = self.tableView.indexPathForSelectedRow {
-                if let fireball = fireball(at: indexPath) {
-                    (segue.destination as! DetailViewController).fireball = fireball
-                }
+                let fireball = fetchedResultsController.object(at: indexPath)
+                (segue.destination as! DetailViewController).fireball = fireball
             }
         }
     }
@@ -41,26 +75,53 @@ class MasterViewController: UITableViewController {
     // MARK: - Table View
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        guard let sections = fetchedResultsController.sections else {
+            return 1
+        }
+        return sections.count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.fireballs.count
+        guard let sections = self.fetchedResultsController.sections else {
+            return 0
+        }
+        
+        guard section < sections.count else {
+            return 0
+        }
+        
+        return sections[section].numberOfObjects
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        if let fireball = fireball(at: indexPath) {
-            cell.textLabel!.text = "\(fireball.date)"
-        }
+        let fireball = fetchedResultsController.object(at: indexPath)
+        cell.textLabel!.text = fireball.dateStr
         return cell
     }
     
-    func fireball(at indexPath: IndexPath) -> Fireball? {
-        guard indexPath.row < fireballs.count else {
-            return nil
+    // MARK: - FetchedResultsControllerDelegate
+    
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        self.tableView.beginUpdates()
+    }
+    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        self.tableView.endUpdates()
+    }
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        
+        switch type {
+        case .insert:
+            self.tableView.insertRows(at: [newIndexPath!], with: .fade)
+        case .update:
+            self.tableView.reloadRows(at: [indexPath!], with: .fade)
+        case .move:
+            self.tableView.moveRow(at: indexPath!, to: newIndexPath!)
+        case .delete:
+            self.tableView.deleteRows(at: [indexPath!], with: .fade)
         }
-        return fireballs[indexPath.row]
     }
 
 }

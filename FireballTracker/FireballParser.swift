@@ -31,9 +31,9 @@ struct FireballParser {
         self.json = json
     }
     
-    func fireballs() -> [Fireball] {
+    func fireballs() -> [FireballJSON] {
         
-        var fireballs = [Fireball]()
+        var fireballs = [FireballJSON]()
         
         let fireballDicts = parseFireballDicts()
         for dict in fireballDicts {
@@ -41,7 +41,7 @@ struct FireballParser {
                 let date = try parseDate(dict)
                 let latitude = try parseLatitude(dict)
                 let longitude = try parseLongitude(dict)
-                fireballs.append(Fireball(date: date, latitude: latitude, longitude: longitude))
+                fireballs.append(FireballJSON(date: date, latitude: latitude, longitude: longitude))
             } catch let error {
                 print(error.localizedDescription)
             }

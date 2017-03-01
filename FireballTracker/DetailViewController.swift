@@ -12,7 +12,7 @@ import MapKit
 class DetailViewController: UIViewController, MKMapViewDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
-    var fireball: Fireball?
+    var fireball: FireballMO?
 
     func configureView() {
         if let fireball = fireball {

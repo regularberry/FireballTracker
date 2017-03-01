@@ -10,8 +10,8 @@ import Foundation
 
 struct FireballApi {
     
-    public typealias FireballCompletion = ([Fireball], Error?) -> ()
-    let url = URL(string: "https://ssd-api.jpl.nasa.gov/fireball.api?req-loc=true&limit=3")!
+    public typealias FireballCompletion = ([FireballJSON], Error?) -> ()
+    let url = URL(string: "https://ssd-api.jpl.nasa.gov/fireball.api?req-loc=true&limit=10")!
     
     func getFireballs(completion: @escaping FireballCompletion) {
         
