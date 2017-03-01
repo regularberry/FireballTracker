@@ -24,23 +24,9 @@ struct FireballApi {
             }
             
             do {
-                var fireballs = [Fireball]()
-                let jsonResult = try JSONSerialization.jsonObject(with: data!, options: []) as! [String : Any]
-                let fields = jsonResult["fields"] as! [String]
-                if let rawFireballs = jsonResult["data"] as? [[Any]] {
-                    
-                    for fireballData in rawFireballs {
-                        if fields.count == fireballData.count {
-                            var fireballDict = [String: Any]()
-                            for (index, val) in fields.enumerated() {
-                                fireballDict[val] = fireballData[index]
-                            }
-                            let fireball = try Fireball(json: fireballDict)
-                            fireballs.append(fireball)
-                        }
-                    }
-                }
-                completion(fireballs, nil)
+                let json = try JSONSerialization.jsonObject(with: data!, options: []) as! [String : Any]
+                let parser = FireballParser(json: json)
+                completion(parser.fireballs(), nil)
             } catch let error {
                 completion([], error)
             }
