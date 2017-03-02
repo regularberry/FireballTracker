@@ -51,7 +51,7 @@
                         </constraints>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Detail" id="mOI-FS-AaM"/>
+                    <navigationItem key="navigationItem" title="Location" id="mOI-FS-AaM"/>
                     <connections>
                         <outlet property="mapView" destination="AD0-J6-z93" id="etT-Fe-h7V"/>
                     </connections>
@@ -97,11 +97,11 @@
                             <outlet property="delegate" destination="7bK-jq-Zjz" id="RA6-mI-bju"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Master" id="Zdf-7t-Un8"/>
+                    <navigationItem key="navigationItem" title="Fireballs in sky" id="Zdf-7t-Un8"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rux-fX-hf1" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-122" y="-405"/>
+            <point key="canvasLocation" x="-83" y="-405"/>
         </scene>
     </scenes>
 </document>
