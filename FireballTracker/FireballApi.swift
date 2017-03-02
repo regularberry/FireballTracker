@@ -9,7 +9,7 @@
 import Foundation
 
 typealias FireballCompletion = ([FireballJSON], Error?) -> ()
-let RESULTS_CHUNK_SIZE = 10
+let RESULTS_CHUNK_SIZE = 40
 let BASE_URL_STR = "https://ssd-api.jpl.nasa.gov/fireball.api?req-loc=true&limit=\(RESULTS_CHUNK_SIZE)"
 
 struct FireballApi {

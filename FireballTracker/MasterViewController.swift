@@ -16,27 +16,10 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
     
     let fireballApi = FireballApi()
     var fireballs: [FireballMO] = []
-    
-    var requestCompletion: FireballCompletion?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupFetchedResultsController()
-        
-        requestCompletion = { [unowned self] (jsonFireballs, error) in
-            self.refreshControl?.endRefreshing()
-            
-            guard error == nil else {
-                print(error!.localizedDescription)
-                return
-            }
-            
-            guard jsonFireballs.count > 0 else {
-                return
-            }
-            
-            self.dataManager.replaceAllFireballs(with: jsonFireballs)
-        }
         
         refreshControl = UIRefreshControl()
         refreshControl!.addTarget(self, action: #selector(MasterViewController.refreshData), for: .valueChanged)
@@ -69,17 +52,47 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
     }
     
     func refreshData() {
-        if let latestDate = getLatestDate() {
-            fireballApi.getFireballs(afterDate: latestDate, completion: requestCompletion!)
-        } else {
-            fireballApi.getLatestFireballs(completion: requestCompletion!)
-        }
+        fireballApi.getLatestFireballs(completion: { (jsonFireballs, error) in
+            self.refreshControl?.endRefreshing()
+            
+            guard error == nil else {
+                print(error!.localizedDescription)
+                return
+            }
+            
+            guard jsonFireballs.count > 0 else {
+                return
+            }
+            
+            self.dataManager.replaceAllFireballs(with: jsonFireballs)
+        })
     }
     
-    func getLatestDate() -> Date? {
+    func getOlderData() {
+        guard let oldestDate = getOldestDate() else {
+            return
+        }
+        
+        fireballApi.getFireballs(afterDate: oldestDate, completion: { (jsonFireballs, error) in
+            self.refreshControl?.endRefreshing()
+            
+            guard error == nil else {
+                print(error!.localizedDescription)
+                return
+            }
+            
+            guard jsonFireballs.count > 0 else {
+                return
+            }
+            
+            self.dataManager.save(jsonFireballs: jsonFireballs)
+        })
+    }
+    
+    func getOldestDate() -> Date? {
         let fireballs = dataManager.allExistingFireballs()
-        if let latest = fireballs.first {
-            return latest.swiftDate
+        if let last = fireballs.last {
+            return last.swiftDate
         }
         return nil
     }
@@ -103,15 +116,19 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return numberOfRows(inSection: section)
+    }
+    
+    func numberOfRows(inSection: Int) -> Int {
         guard let sections = self.fetchedResultsController.sections else {
             return 0
         }
         
-        guard section < sections.count else {
+        guard inSection < sections.count else {
             return 0
         }
         
-        return sections[section].numberOfObjects
+        return sections[inSection].numberOfObjects
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -119,6 +136,12 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
         let fireball = fetchedResultsController.object(at: indexPath)
         cell.textLabel!.text = fireball.dateStr
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.row == numberOfRows(inSection: 0) - 1 {
+            getOlderData()
+        }
     }
     
     // MARK: - FetchedResultsControllerDelegate
