@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		1168F49D1E66124000055E3D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1168F49C1E66124000055E3D /* AppDelegate.swift */; };
 		1168F4A01E66124000055E3D /* FireballTracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1168F49E1E66124000055E3D /* FireballTracker.xcdatamodeld */; };
-		1168F4A21E66124000055E3D /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1168F4A11E66124000055E3D /* MasterViewController.swift */; };
-		1168F4A41E66124000055E3D /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1168F4A31E66124000055E3D /* DetailViewController.swift */; };
+		1168F4A21E66124000055E3D /* FireballListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1168F4A11E66124000055E3D /* FireballListVC.swift */; };
+		1168F4A41E66124000055E3D /* FireballLocationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1168F4A31E66124000055E3D /* FireballLocationVC.swift */; };
 		1168F4A71E66124000055E3D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1168F4A51E66124000055E3D /* Main.storyboard */; };
 		1168F4A91E66124000055E3D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1168F4A81E66124000055E3D /* Assets.xcassets */; };
 		1168F4AC1E66124000055E3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1168F4AA1E66124000055E3D /* LaunchScreen.storyboard */; };
@@ -43,8 +43,8 @@
 		1168F4991E66124000055E3D /* FireballTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FireballTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1168F49C1E66124000055E3D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1168F49F1E66124000055E3D /* FireballTracker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FireballTracker.xcdatamodel; sourceTree = "<group>"; };
-		1168F4A11E66124000055E3D /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
-		1168F4A31E66124000055E3D /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		1168F4A11E66124000055E3D /* FireballListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireballListVC.swift; sourceTree = "<group>"; };
+		1168F4A31E66124000055E3D /* FireballLocationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireballLocationVC.swift; sourceTree = "<group>"; };
 		1168F4A61E66124000055E3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1168F4A81E66124000055E3D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1168F4AB1E66124000055E3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -110,8 +110,8 @@
 			isa = PBXGroup;
 			children = (
 				1168F49C1E66124000055E3D /* AppDelegate.swift */,
-				1168F4A11E66124000055E3D /* MasterViewController.swift */,
-				1168F4A31E66124000055E3D /* DetailViewController.swift */,
+				1168F4A11E66124000055E3D /* FireballListVC.swift */,
+				1168F4A31E66124000055E3D /* FireballLocationVC.swift */,
 				1168F4A51E66124000055E3D /* Main.storyboard */,
 				1168F4A81E66124000055E3D /* Assets.xcassets */,
 				1168F4AA1E66124000055E3D /* LaunchScreen.storyboard */,
@@ -285,8 +285,8 @@
 				1168F4A01E66124000055E3D /* FireballTracker.xcdatamodeld in Sources */,
 				1168F4D01E66174100055E3D /* FireballModels.swift in Sources */,
 				1168F4D21E661E1F00055E3D /* FireballApi.swift in Sources */,
-				1168F4A21E66124000055E3D /* MasterViewController.swift in Sources */,
-				1168F4A41E66124000055E3D /* DetailViewController.swift in Sources */,
+				1168F4A21E66124000055E3D /* FireballListVC.swift in Sources */,
+				1168F4A41E66124000055E3D /* FireballLocationVC.swift in Sources */,
 				1172D2831E674871004BCA04 /* FireballParser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

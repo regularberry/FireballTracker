@@ -32,7 +32,7 @@ struct FireballParser {
     }
     
     func fireballs() -> [FireballJSON] {
-        
+
         var fireballs = [FireballJSON]()
         
         let fireballDicts = parseFireballDicts()

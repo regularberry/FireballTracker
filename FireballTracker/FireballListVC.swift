@@ -1,5 +1,5 @@
 //
-//  MasterViewController.swift
+//  FireballListVC.swift
 //  FireballTracker
 //
 //  Created by Sean Berry on 2/28/17.
@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class MasterViewController: UITableViewController, NSFetchedResultsControllerDelegate {
+class FireballListVC: UITableViewController, NSFetchedResultsControllerDelegate {
     
     lazy var dataManager: FireballDataManager = FireballDataManager()
     var fetchedResultsController: NSFetchedResultsController<FireballMO>!
@@ -22,7 +22,7 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
         setupFetchedResultsController()
         
         refreshControl = UIRefreshControl()
-        refreshControl!.addTarget(self, action: #selector(MasterViewController.refreshData), for: .valueChanged)
+        refreshControl!.addTarget(self, action: #selector(FireballListVC.refreshData), for: .valueChanged)
         
         if noFireballs() {
             refreshData()
@@ -99,9 +99,13 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetail" {
+            guard let detail = segue.destination as? FireballLocationVC else {
+                return
+            }
+            
             if let indexPath = self.tableView.indexPathForSelectedRow {
                 let fireball = fetchedResultsController.object(at: indexPath)
-                (segue.destination as! DetailViewController).fireball = fireball
+                detail.fireball = fireball
             }
         }
     }

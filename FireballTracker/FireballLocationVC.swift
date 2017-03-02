@@ -1,5 +1,5 @@
 //
-//  DetailViewController.swift
+//  FireballLocationVC.swift
 //  FireballTracker
 //
 //  Created by Sean Berry on 2/28/17.
@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class DetailViewController: UIViewController, MKMapViewDelegate {
+class FireballLocationVC: UIViewController, MKMapViewDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
     var fireball: FireballMO?
