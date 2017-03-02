@@ -41,10 +41,12 @@ public struct FireballDataManager {
     
     public func save(jsonFireballs: [FireballJSON]) {
         for fireball in jsonFireballs {
-            let ballMO = NSEntityDescription.insertNewObject(forEntityName: "Fireball", into: container.viewContext) as! FireballMO
-            ballMO.date = fireball.date as NSDate
-            ballMO.latitude = fireball.latitude
-            ballMO.longitude = fireball.longitude
+            if isUnique(fireball: fireball) {
+                let ballMO = NSEntityDescription.insertNewObject(forEntityName: "Fireball", into: container.viewContext) as! FireballMO
+                ballMO.date = fireball.date as NSDate
+                ballMO.latitude = fireball.latitude
+                ballMO.longitude = fireball.longitude
+            }
         }
         
         saveContext()
@@ -64,5 +66,18 @@ public struct FireballDataManager {
         } catch let error {
             print(error.localizedDescription)
         }
+    }
+    
+    private func isUnique(fireball: FireballJSON) -> Bool {
+        let fetch = NSFetchRequest<FireballMO>(entityName: "Fireball")
+        let predicate = NSPredicate(format: "date==%@ AND longitude==%@ AND latitude==%@", fireball.date as NSDate, fireball.longitude as NSNumber, fireball.latitude as NSNumber)
+        fetch.predicate = predicate
+        do {
+            let fireballs = try container.viewContext.fetch(fetch)
+            return fireballs.count == 0
+        } catch let error {
+            print(error.localizedDescription)
+        }
+        return false
     }
 }
