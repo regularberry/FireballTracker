@@ -14,7 +14,7 @@ class FireballListVC: UITableViewController, NSFetchedResultsControllerDelegate 
     lazy var dataManager: FireballDataManager = FireballDataManager()
     var fetchedResultsController: NSFetchedResultsController<FireballMO>?
     
-    let fireballApi = FireballApi()
+    let fireballApiClient = FireballApiClient()
     var fireballs: [FireballMO] = []
 
     override func viewDidLoad() {
@@ -57,7 +57,7 @@ class FireballListVC: UITableViewController, NSFetchedResultsControllerDelegate 
     }
     
     func refreshData() {
-        fireballApi.getLatestFireballs(completion: { (jsonFireballs, error) in
+        fireballApiClient.getLatestFireballs(completion: { (jsonFireballs, error) in
             self.refreshControl?.endRefreshing()
             
             guard error == nil else {
@@ -78,7 +78,7 @@ class FireballListVC: UITableViewController, NSFetchedResultsControllerDelegate 
             return
         }
         
-        fireballApi.getFireballs(afterDate: oldestDate, completion: { (jsonFireballs, error) in
+        fireballApiClient.getFireballs(afterDate: oldestDate, completion: { (jsonFireballs, error) in
             guard error == nil else {
                 print(error!.localizedDescription)
                 return

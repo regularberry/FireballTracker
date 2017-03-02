@@ -1,5 +1,5 @@
 //
-//  FireballApi.swift
+//  FireballApiClient.swift
 //  FireballTracker
 //
 //  Created by Sean Berry on 2/28/17.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct FireballApi {
+public struct FireballApiClient {
     
     public typealias FireballCompletion = ([FireballJSON], Error?) -> ()
     

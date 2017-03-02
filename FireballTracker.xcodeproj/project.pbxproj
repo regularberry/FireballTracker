@@ -17,7 +17,7 @@
 		1168F4B71E66124000055E3D /* FireballTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1168F4B61E66124000055E3D /* FireballTrackerTests.swift */; };
 		1168F4C21E66124000055E3D /* FireballTrackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1168F4C11E66124000055E3D /* FireballTrackerUITests.swift */; };
 		1168F4D01E66174100055E3D /* FireballModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1168F4CF1E66174100055E3D /* FireballModels.swift */; };
-		1168F4D21E661E1F00055E3D /* FireballApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1168F4D11E661E1F00055E3D /* FireballApi.swift */; };
+		1168F4D21E661E1F00055E3D /* FireballApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1168F4D11E661E1F00055E3D /* FireballApiClient.swift */; };
 		1172D2831E674871004BCA04 /* FireballParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1172D2821E674871004BCA04 /* FireballParser.swift */; };
 		1172D2851E6775F5004BCA04 /* FireballDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1172D2841E6775F5004BCA04 /* FireballDataManager.swift */; };
 		118D21961E688FF70007B135 /* FireballModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118D21951E688FF70007B135 /* FireballModelTests.swift */; };
@@ -58,7 +58,7 @@
 		1168F4C11E66124000055E3D /* FireballTrackerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireballTrackerUITests.swift; sourceTree = "<group>"; };
 		1168F4C31E66124000055E3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1168F4CF1E66174100055E3D /* FireballModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FireballModels.swift; sourceTree = "<group>"; };
-		1168F4D11E661E1F00055E3D /* FireballApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FireballApi.swift; sourceTree = "<group>"; };
+		1168F4D11E661E1F00055E3D /* FireballApiClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FireballApiClient.swift; sourceTree = "<group>"; };
 		1172D2821E674871004BCA04 /* FireballParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FireballParser.swift; sourceTree = "<group>"; };
 		1172D2841E6775F5004BCA04 /* FireballDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FireballDataManager.swift; sourceTree = "<group>"; };
 		118D21951E688FF70007B135 /* FireballModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FireballModelTests.swift; sourceTree = "<group>"; };
@@ -122,7 +122,7 @@
 				1168F4AD1E66124000055E3D /* Info.plist */,
 				1168F49E1E66124000055E3D /* FireballTracker.xcdatamodeld */,
 				1168F4CF1E66174100055E3D /* FireballModels.swift */,
-				1168F4D11E661E1F00055E3D /* FireballApi.swift */,
+				1168F4D11E661E1F00055E3D /* FireballApiClient.swift */,
 				1172D2821E674871004BCA04 /* FireballParser.swift */,
 				1172D2841E6775F5004BCA04 /* FireballDataManager.swift */,
 			);
@@ -290,7 +290,7 @@
 				1168F49D1E66124000055E3D /* AppDelegate.swift in Sources */,
 				1168F4A01E66124000055E3D /* FireballTracker.xcdatamodeld in Sources */,
 				1168F4D01E66174100055E3D /* FireballModels.swift in Sources */,
-				1168F4D21E661E1F00055E3D /* FireballApi.swift in Sources */,
+				1168F4D21E661E1F00055E3D /* FireballApiClient.swift in Sources */,
 				1168F4A21E66124000055E3D /* FireballListVC.swift in Sources */,
 				1168F4A41E66124000055E3D /* FireballLocationVC.swift in Sources */,
 				1172D2831E674871004BCA04 /* FireballParser.swift in Sources */,
