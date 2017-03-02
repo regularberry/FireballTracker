@@ -26,6 +26,10 @@ extension FireballMO {
         return CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
     }
     
+    var swiftDate: Date {
+        return date as! Date
+    }
+    
     var dateStr: String {
         let formatter = DateFormatter()
         formatter.dateFormat = "MM/dd/YYYY"

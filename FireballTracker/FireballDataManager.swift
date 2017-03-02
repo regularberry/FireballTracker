@@ -24,6 +24,7 @@ struct FireballDataManager {
     
     func allExistingFireballs() -> [FireballMO] {
         let fetch = NSFetchRequest<FireballMO>(entityName: "Fireball")
+        fetch.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
         do {
             let fireballs = try container.viewContext.fetch(fetch)
             return fireballs

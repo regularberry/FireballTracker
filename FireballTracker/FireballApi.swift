@@ -8,13 +8,27 @@
 
 import Foundation
 
+typealias FireballCompletion = ([FireballJSON], Error?) -> ()
+let RESULTS_CHUNK_SIZE = 10
+let BASE_URL_STR = "https://ssd-api.jpl.nasa.gov/fireball.api?req-loc=true&limit=\(RESULTS_CHUNK_SIZE)"
+
 struct FireballApi {
     
-    public typealias FireballCompletion = ([FireballJSON], Error?) -> ()
-    let url = URL(string: "https://ssd-api.jpl.nasa.gov/fireball.api?req-loc=true&limit=10")!
+    func getFireballs(afterDate: Date, completion: @escaping FireballCompletion) {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "YYYY-MM-dd HH:mm:ss"
+        let dateStr = formatter.string(from: afterDate)
+        let split = dateStr.components(separatedBy: " ")
+        let dateUrlField = "\(split[0])T\(split[1])"
+        let url = URL(string: "\(BASE_URL_STR)&date-max=\(dateUrlField)")!
+        getFireballs(url: url, completion: completion)
+    }
     
-    func getFireballs(completion: @escaping FireballCompletion) {
-        
+    func getLatestFireballs(completion: @escaping FireballCompletion) {
+        getFireballs(url: URL(string: BASE_URL_STR)!, completion: completion)
+    }
+    
+    private func getFireballs(url: URL, completion: @escaping FireballCompletion) {
         let task = URLSession.shared.dataTask(with: url, completionHandler: {
             (data:Data?, response:URLResponse?, error:Error?) -> Void in
             

@@ -16,10 +16,27 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
     
     let fireballApi = FireballApi()
     var fireballs: [FireballMO] = []
+    
+    var requestCompletion: FireballCompletion?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupFetchedResultsController()
+        
+        requestCompletion = { [unowned self] (jsonFireballs, error) in
+            self.refreshControl?.endRefreshing()
+            
+            guard error == nil else {
+                print(error!.localizedDescription)
+                return
+            }
+            
+            guard jsonFireballs.count > 0 else {
+                return
+            }
+            
+            self.dataManager.replaceAllFireballs(with: jsonFireballs)
+        }
         
         refreshControl = UIRefreshControl()
         refreshControl!.addTarget(self, action: #selector(MasterViewController.refreshData), for: .valueChanged)
@@ -52,21 +69,19 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
     }
     
     func refreshData() {
-        fireballApi.getFireballs(completion: { (jsonFireballs, error) in
-            
-            self.refreshControl?.endRefreshing()
-            
-            guard error == nil else {
-                print(error!.localizedDescription)
-                return
-            }
-            
-            guard jsonFireballs.count > 0 else {
-                return
-            }
-            
-            self.dataManager.replaceAllFireballs(with: jsonFireballs)
-        })
+        if let latestDate = getLatestDate() {
+            fireballApi.getFireballs(afterDate: latestDate, completion: requestCompletion!)
+        } else {
+            fireballApi.getLatestFireballs(completion: requestCompletion!)
+        }
+    }
+    
+    func getLatestDate() -> Date? {
+        let fireballs = dataManager.allExistingFireballs()
+        if let latest = fireballs.first {
+            return latest.swiftDate
+        }
+        return nil
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
