@@ -12,7 +12,7 @@ import CoreData
 class FireballListVC: UITableViewController, NSFetchedResultsControllerDelegate {
     
     lazy var dataManager: FireballDataManager = FireballDataManager()
-    var fetchedResultsController: NSFetchedResultsController<FireballMO>!
+    var fetchedResultsController: NSFetchedResultsController<FireballMO>?
     
     let fireballApi = FireballApi()
     var fireballs: [FireballMO] = []
@@ -20,6 +20,10 @@ class FireballListVC: UITableViewController, NSFetchedResultsControllerDelegate 
     override func viewDidLoad() {
         super.viewDidLoad()
         dataManager.loadStore(completion: {(description, error) in
+            guard error == nil else {
+                print("Data Store failed to load: \(error!.localizedDescription)")
+                return
+            }
             self.setupFetchedResultsController()
         })
         
@@ -27,29 +31,29 @@ class FireballListVC: UITableViewController, NSFetchedResultsControllerDelegate 
         refreshControl!.addTarget(self, action: #selector(FireballListVC.refreshData), for: .valueChanged)
     }
     
-    func noFireballs() -> Bool {
-        guard let fetched = fetchedResultsController.fetchedObjects else {
-            print("No fireballs? We haven't tried to fetch them yet.")
-            return false
-        }
-        return fetched.count == 0
-    }
-    
     func setupFetchedResultsController() {
         let fetch = NSFetchRequest<FireballMO>(entityName: "Fireball")
         fetch.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
         
         self.fetchedResultsController = NSFetchedResultsController(fetchRequest: fetch, managedObjectContext: dataManager.container.viewContext, sectionNameKeyPath: nil, cacheName: nil)
-        self.fetchedResultsController.delegate = self
+        self.fetchedResultsController?.delegate = self
         
         do {
-            try self.fetchedResultsController.performFetch()
+            try self.fetchedResultsController?.performFetch()
             if noFireballs() {
                 refreshData()
             }
         } catch let error {
             print(error.localizedDescription)
         }
+    }
+    
+    func noFireballs() -> Bool {
+        guard let fetched = fetchedResultsController?.fetchedObjects else {
+            print("No fireballs? We haven't tried to fetch them yet.")
+            return false
+        }
+        return fetched.count == 0
     }
     
     func refreshData() {
@@ -75,8 +79,6 @@ class FireballListVC: UITableViewController, NSFetchedResultsControllerDelegate 
         }
         
         fireballApi.getFireballs(afterDate: oldestDate, completion: { (jsonFireballs, error) in
-            self.refreshControl?.endRefreshing()
-            
             guard error == nil else {
                 print(error!.localizedDescription)
                 return
@@ -92,10 +94,10 @@ class FireballListVC: UITableViewController, NSFetchedResultsControllerDelegate 
     
     func getOldestDate() -> Date? {
         let fireballs = dataManager.allExistingFireballs()
-        if let last = fireballs.last {
-            return last.swiftDate
+        guard let last = fireballs.last else {
+            return nil
         }
-        return nil
+        return last.swiftDate
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -104,8 +106,9 @@ class FireballListVC: UITableViewController, NSFetchedResultsControllerDelegate 
                 return
             }
             
-            if let indexPath = self.tableView.indexPathForSelectedRow {
-                let fireball = fetchedResultsController.object(at: indexPath)
+            if let indexPath = self.tableView.indexPathForSelectedRow,
+                let controller = fetchedResultsController {
+                let fireball = controller.object(at: indexPath)
                 detail.fireball = fireball
             }
         }
@@ -114,7 +117,7 @@ class FireballListVC: UITableViewController, NSFetchedResultsControllerDelegate 
     // MARK: - Table View
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        guard let sections = fetchedResultsController.sections else {
+        guard let sections = fetchedResultsController?.sections else {
             return 1
         }
         return sections.count
@@ -125,7 +128,7 @@ class FireballListVC: UITableViewController, NSFetchedResultsControllerDelegate 
     }
     
     func numberOfRows(inSection: Int) -> Int {
-        guard let sections = self.fetchedResultsController.sections else {
+        guard let sections = fetchedResultsController?.sections else {
             return 0
         }
         
@@ -138,8 +141,10 @@ class FireballListVC: UITableViewController, NSFetchedResultsControllerDelegate 
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        let fireball = fetchedResultsController.object(at: indexPath)
-        cell.textLabel!.text = fireball.dateStr
+        if let controller = fetchedResultsController {
+            let fireball = controller.object(at: indexPath)
+            cell.textLabel!.text = fireball.dateStr
+        }
         return cell
     }
     

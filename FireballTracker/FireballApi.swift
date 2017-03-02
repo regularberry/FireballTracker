@@ -8,24 +8,30 @@
 
 import Foundation
 
-typealias FireballCompletion = ([FireballJSON], Error?) -> ()
-let RESULTS_CHUNK_SIZE = 40
-let BASE_URL_STR = "https://ssd-api.jpl.nasa.gov/fireball.api?req-loc=true&limit=\(RESULTS_CHUNK_SIZE)"
-
-struct FireballApi {
+public struct FireballApi {
     
-    func getFireballs(afterDate: Date, completion: @escaping FireballCompletion) {
+    public typealias FireballCompletion = ([FireballJSON], Error?) -> ()
+    
+    let chunkSize: Int
+    let baseUrlStr: String
+    
+    public init(chunkSize: Int = 40) {
+        self.chunkSize = chunkSize
+        self.baseUrlStr = "https://ssd-api.jpl.nasa.gov/fireball.api?req-loc=true&limit=\(chunkSize)"
+    }
+    
+    public func getFireballs(afterDate: Date, completion: @escaping FireballCompletion) {
         let formatter = DateFormatter()
         formatter.dateFormat = "YYYY-MM-dd HH:mm:ss"
         let dateStr = formatter.string(from: afterDate)
         let split = dateStr.components(separatedBy: " ")
         let dateUrlField = "\(split[0])T\(split[1])"
-        let url = URL(string: "\(BASE_URL_STR)&date-max=\(dateUrlField)")!
+        let url = URL(string: "\(baseUrlStr)&date-max=\(dateUrlField)")!
         getFireballs(url: url, completion: completion)
     }
     
-    func getLatestFireballs(completion: @escaping FireballCompletion) {
-        getFireballs(url: URL(string: BASE_URL_STR)!, completion: completion)
+    public func getLatestFireballs(completion: @escaping FireballCompletion) {
+        getFireballs(url: URL(string: baseUrlStr)!, completion: completion)
     }
     
     private func getFireballs(url: URL, completion: @escaping FireballCompletion) {
@@ -47,5 +53,4 @@ struct FireballApi {
         })
         task.resume()
     }
-    
 }

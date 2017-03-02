@@ -21,12 +21,12 @@ public struct FireballJSON {
     }
 }
 
-extension FireballMO {
-    var coordinate: CLLocationCoordinate2D {
+public extension FireballMO {
+    public var coordinate: CLLocationCoordinate2D {
         return CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
     }
     
-    var swiftDate: Date {
+    public var swiftDate: Date {
         return date as! Date
     }
     
