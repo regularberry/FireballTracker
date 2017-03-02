@@ -9,20 +9,25 @@
 import Foundation
 import CoreData
 
-struct FireballDataManager {
+public struct FireballDataManager {
     
     let container: NSPersistentContainer
     
-    init() {
+    public init(inMemory: Bool = false) {
         self.container = NSPersistentContainer(name: "FireballTracker")
-        self.container.loadPersistentStores(completionHandler: { (storeDescription, error) in
-            if let error = error as NSError? {
-                fatalError("Unresolved error \(error), \(error.userInfo)")
-            }
-        })
+        
+        if inMemory {
+            let description = NSPersistentStoreDescription()
+            description.type = NSInMemoryStoreType
+            self.container.persistentStoreDescriptions = [description]
+        }
     }
     
-    func allExistingFireballs() -> [FireballMO] {
+    public func loadStore(completion block: @escaping (NSPersistentStoreDescription, Error?) -> Void) {
+        container.loadPersistentStores(completionHandler: block)
+    }
+    
+    public func allExistingFireballs() -> [FireballMO] {
         let fetch = NSFetchRequest<FireballMO>(entityName: "Fireball")
         fetch.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
         do {
@@ -34,7 +39,7 @@ struct FireballDataManager {
         return []
     }
     
-    func save(jsonFireballs: [FireballJSON]) {
+    public func save(jsonFireballs: [FireballJSON]) {
         for fireball in jsonFireballs {
             let ballMO = NSEntityDescription.insertNewObject(forEntityName: "Fireball", into: container.viewContext) as! FireballMO
             ballMO.date = fireball.date as NSDate
@@ -45,7 +50,7 @@ struct FireballDataManager {
         saveContext()
     }
     
-    func replaceAllFireballs(with jsonFireballs: [FireballJSON]) {
+    public func replaceAllFireballs(with jsonFireballs: [FireballJSON]) {
         let fireballs = allExistingFireballs()
         for fireball in fireballs {
             container.viewContext.delete(fireball)

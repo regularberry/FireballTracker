@@ -20,6 +20,8 @@
 		1168F4D21E661E1F00055E3D /* FireballApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1168F4D11E661E1F00055E3D /* FireballApi.swift */; };
 		1172D2831E674871004BCA04 /* FireballParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1172D2821E674871004BCA04 /* FireballParser.swift */; };
 		1172D2851E6775F5004BCA04 /* FireballDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1172D2841E6775F5004BCA04 /* FireballDataManager.swift */; };
+		118D21961E688FF70007B135 /* FireballModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118D21951E688FF70007B135 /* FireballModelTests.swift */; };
+		118D21991E6895860007B135 /* FireballDataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118D21981E6895860007B135 /* FireballDataManagerTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +61,8 @@
 		1168F4D11E661E1F00055E3D /* FireballApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FireballApi.swift; sourceTree = "<group>"; };
 		1172D2821E674871004BCA04 /* FireballParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FireballParser.swift; sourceTree = "<group>"; };
 		1172D2841E6775F5004BCA04 /* FireballDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FireballDataManager.swift; sourceTree = "<group>"; };
+		118D21951E688FF70007B135 /* FireballModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FireballModelTests.swift; sourceTree = "<group>"; };
+		118D21981E6895860007B135 /* FireballDataManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FireballDataManagerTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +134,8 @@
 			children = (
 				1168F4B61E66124000055E3D /* FireballTrackerTests.swift */,
 				1168F4B81E66124000055E3D /* Info.plist */,
+				118D21951E688FF70007B135 /* FireballModelTests.swift */,
+				118D21981E6895860007B135 /* FireballDataManagerTests.swift */,
 			);
 			path = FireballTrackerTests;
 			sourceTree = "<group>";
@@ -295,7 +301,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				118D21961E688FF70007B135 /* FireballModelTests.swift in Sources */,
 				1168F4B71E66124000055E3D /* FireballTrackerTests.swift in Sources */,
+				118D21991E6895860007B135 /* FireballDataManagerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

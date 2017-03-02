@@ -19,14 +19,12 @@ class FireballListVC: UITableViewController, NSFetchedResultsControllerDelegate 
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupFetchedResultsController()
+        dataManager.loadStore(completion: {(description, error) in
+            self.setupFetchedResultsController()
+        })
         
         refreshControl = UIRefreshControl()
         refreshControl!.addTarget(self, action: #selector(FireballListVC.refreshData), for: .valueChanged)
-        
-        if noFireballs() {
-            refreshData()
-        }
     }
     
     func noFireballs() -> Bool {
@@ -46,6 +44,9 @@ class FireballListVC: UITableViewController, NSFetchedResultsControllerDelegate 
         
         do {
             try self.fetchedResultsController.performFetch()
+            if noFireballs() {
+                refreshData()
+            }
         } catch let error {
             print(error.localizedDescription)
         }

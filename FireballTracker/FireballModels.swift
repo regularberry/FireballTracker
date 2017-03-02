@@ -9,12 +9,12 @@
 import Foundation
 import CoreLocation
 
-struct FireballJSON {
-    let date: Date
-    let latitude: Double
-    let longitude: Double
+public struct FireballJSON {
+    public let date: Date
+    public let latitude: Double
+    public let longitude: Double
     
-    init(date: Date, latitude: Double, longitude: Double) {
+    public init(date: Date, latitude: Double, longitude: Double) {
         self.date = date
         self.latitude = latitude
         self.longitude = longitude
