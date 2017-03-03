@@ -25,9 +25,14 @@ enum LongitudeDirection: String {
 
 public protocol ParsesFireballs {
     func fireballs(fromJson: [String: Any]) -> [FireballJSON]
+    func date(from dateStr: String) -> Date? // Needs to be in GMT time zone
 }
 
 public struct FireballParser: ParsesFireballs {
+    
+    public init() {
+        
+    }
     
     public func fireballs(fromJson: [String: Any]) -> [FireballJSON] {
 
@@ -46,6 +51,13 @@ public struct FireballParser: ParsesFireballs {
         }
         
         return fireballs
+    }
+    
+    public func date(from dateStr: String) -> Date? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+        return dateFormatter.date(from: dateStr)
     }
     
     private func parseFireballDicts(json: [String: Any]) -> [[String: Any]] {
@@ -77,10 +89,7 @@ public struct FireballParser: ParsesFireballs {
             throw JSONError.missing("Date")
         }
         
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
-        guard let date = dateFormatter.date(from: dateStr) else {
+        guard let date = date(from: dateStr) else {
             throw JSONError.parse("Date")
         }
         return date
