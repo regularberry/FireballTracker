@@ -23,19 +23,17 @@ enum LongitudeDirection: String {
     case west = "W"
 }
 
-struct FireballParser {
+public protocol ParsesFireballs {
+    func fireballs(fromJson: [String: Any]) -> [FireballJSON]
+}
+
+public struct FireballParser: ParsesFireballs {
     
-    let json: [String: Any]
-    
-    init(json: [String: Any]) {
-        self.json = json
-    }
-    
-    func fireballs() -> [FireballJSON] {
+    public func fireballs(fromJson: [String: Any]) -> [FireballJSON] {
 
         var fireballs = [FireballJSON]()
         
-        let fireballDicts = parseFireballDicts()
+        let fireballDicts = parseFireballDicts(json: fromJson)
         for dict in fireballDicts {
             do {
                 let date = try parseDate(dict)
@@ -50,7 +48,7 @@ struct FireballParser {
         return fireballs
     }
     
-    private func parseFireballDicts() -> [[String: Any]] {
+    private func parseFireballDicts(json: [String: Any]) -> [[String: Any]] {
         guard let fields = json["fields"] as? [String] else {
             return []
         }

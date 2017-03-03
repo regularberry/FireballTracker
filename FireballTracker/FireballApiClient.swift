@@ -14,16 +14,18 @@ public struct FireballApiClient {
     
     let chunkSize: Int
     let baseUrlStr: String
+    let parser: ParsesFireballs
     
-    public init(chunkSize: Int = 40) {
+    public init(parser: ParsesFireballs = FireballParser(), chunkSize: Int = 40) {
+        self.parser = parser
         self.chunkSize = chunkSize
         self.baseUrlStr = "https://ssd-api.jpl.nasa.gov/fireball.api?req-loc=true&limit=\(chunkSize)"
     }
     
-    public func getFireballs(afterDate: Date, completion: @escaping FireballCompletion) {
+    public func getFireballs(beforeDate: Date, completion: @escaping FireballCompletion) {
         let formatter = DateFormatter()
         formatter.dateFormat = "YYYY-MM-dd HH:mm:ss"
-        let dateStr = formatter.string(from: afterDate)
+        let dateStr = formatter.string(from: beforeDate)
         let split = dateStr.components(separatedBy: " ")
         let dateUrlField = "\(split[0])T\(split[1])"
         let url = URL(string: "\(baseUrlStr)&date-max=\(dateUrlField)")!
@@ -45,8 +47,7 @@ public struct FireballApiClient {
             
             do {
                 let json = try JSONSerialization.jsonObject(with: data!, options: []) as! [String : Any]
-                let parser = FireballParser(json: json)
-                completion(parser.fireballs(), nil)
+                completion(self.parser.fireballs(fromJson: json), nil)
             } catch let error {
                 completion([], error)
             }

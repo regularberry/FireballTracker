@@ -78,7 +78,7 @@ class FireballListVC: UITableViewController, NSFetchedResultsControllerDelegate 
             return
         }
         
-        fireballApiClient.getFireballs(afterDate: oldestDate, completion: { (jsonFireballs, error) in
+        fireballApiClient.getFireballs(beforeDate: oldestDate, completion: { (jsonFireballs, error) in
             guard error == nil else {
                 print(error!.localizedDescription)
                 return
