@@ -16,7 +16,10 @@ class FireballListVC: UITableViewController, NSFetchedResultsControllerDelegate 
     
     let fireballApiClient = FireballApiClient()
     var fireballs: [FireballMO] = []
+    
+    var possiblyMoreData = true
 
+    @IBOutlet weak var footerView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
         dataManager.loadStore(completion: {(description, error) in
@@ -66,6 +69,10 @@ class FireballListVC: UITableViewController, NSFetchedResultsControllerDelegate 
             }
             
             guard jsonFireballs.count > 0 else {
+                self.possiblyMoreData = false
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
                 return
             }
             
@@ -124,7 +131,8 @@ class FireballListVC: UITableViewController, NSFetchedResultsControllerDelegate 
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return numberOfRows(inSection: section)
+        let extraRow = possiblyMoreData ? 1 : 0
+        return numberOfRows(inSection: section) + extraRow
     }
     
     func numberOfRows(inSection: Int) -> Int {
@@ -140,6 +148,12 @@ class FireballListVC: UITableViewController, NSFetchedResultsControllerDelegate 
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        if indexPath.row == numberOfRows(inSection: 0) {
+            let activityCell = tableView.dequeueReusableCell(withIdentifier: "ActivityCell")!
+            return activityCell
+        }
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "DayCell", for: indexPath) as! DayCell
         if let controller = fetchedResultsController {
             let fireball = controller.object(at: indexPath)
@@ -150,7 +164,9 @@ class FireballListVC: UITableViewController, NSFetchedResultsControllerDelegate 
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if indexPath.row == numberOfRows(inSection: 0) - 1 {
-            getOlderData()
+            if possiblyMoreData {
+                getOlderData()
+            }
         }
     }
     

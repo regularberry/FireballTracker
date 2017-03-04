@@ -30,6 +30,7 @@
 		118D21A31E69E82B0007B135 /* SingleNegative.json in Resources */ = {isa = PBXBuildFile; fileRef = 118D21A21E69E82B0007B135 /* SingleNegative.json */; };
 		118D21A51E6B36950007B135 /* meteor@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 118D21A41E6B36950007B135 /* meteor@3x.png */; };
 		118D21A71E6B409D0007B135 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118D21A61E6B409D0007B135 /* Extensions.swift */; };
+		11CE5F891E6B47E500500269 /* ActivityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11CE5F881E6B47E500500269 /* ActivityCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +80,7 @@
 		118D21A21E69E82B0007B135 /* SingleNegative.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SingleNegative.json; sourceTree = "<group>"; };
 		118D21A41E6B36950007B135 /* meteor@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "meteor@3x.png"; sourceTree = "<group>"; };
 		118D21A61E6B409D0007B135 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		11CE5F881E6B47E500500269 /* ActivityCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +146,7 @@
 				1168F4AA1E66124000055E3D /* LaunchScreen.storyboard */,
 				1168F4A51E66124000055E3D /* Main.storyboard */,
 				118D21A41E6B36950007B135 /* meteor@3x.png */,
+				11CE5F881E6B47E500500269 /* ActivityCell.swift */,
 			);
 			path = FireballTracker;
 			sourceTree = "<group>";
@@ -316,6 +319,7 @@
 			files = (
 				1172D2851E6775F5004BCA04 /* FireballDataManager.swift in Sources */,
 				1102DBEE1E6A1F1C009689A3 /* DayCell.swift in Sources */,
+				11CE5F891E6B47E500500269 /* ActivityCell.swift in Sources */,
 				1168F49D1E66124000055E3D /* AppDelegate.swift in Sources */,
 				1168F4A01E66124000055E3D /* FireballTracker.xcdatamodeld in Sources */,
 				1168F4D01E66174100055E3D /* FireballModels.swift in Sources */,
