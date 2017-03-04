@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -64,29 +65,112 @@
         <scene sceneID="smW-Zh-WAh">
             <objects>
                 <tableViewController title="Master" clearsSelectionOnViewWillAppear="NO" id="7bK-jq-Zjz" userLabel="Fireball List" customClass="FireballListVC" customModule="FireballTracker" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="r7i-6Z-zg0">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="140" sectionHeaderHeight="22" sectionFooterHeight="22" id="r7i-6Z-zg0">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.99355429409999996" green="0.95594078299999996" blue="0.75071161990000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="Arm-wq-HPj" style="IBUITableViewCellStyleDefault" id="WCw-Qf-5nD">
-                                <rect key="frame" x="0.0" y="22" width="414" height="44"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DayCell" id="WCw-Qf-5nD" customClass="DayCell" customModule="FireballTracker" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="22" width="414" height="140"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WCw-Qf-5nD" id="37f-cq-3Eg">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="140"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Arm-wq-HPj">
-                                            <rect key="frame" x="15" y="0.0" width="384" height="43.666666666666664"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </label>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ka8-Mv-NSG" userLabel="Bottom Container">
+                                            <rect key="frame" x="62" y="96.333333333333329" width="290" height="23.333333333333343"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Monday  7 - 14" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="Jdx-aK-L8x">
+                                                    <rect key="frame" x="0.0" y="0.0" width="290" height="23.333333333333343"/>
+                                                    <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstItem="Jdx-aK-L8x" firstAttribute="top" secondItem="Ka8-Mv-NSG" secondAttribute="top" id="9Pg-Dp-0R3"/>
+                                                <constraint firstItem="Jdx-aK-L8x" firstAttribute="leading" secondItem="Ka8-Mv-NSG" secondAttribute="leading" id="Oez-pS-8Ku"/>
+                                                <constraint firstAttribute="trailing" secondItem="Jdx-aK-L8x" secondAttribute="trailing" id="YwJ-Zc-Lif"/>
+                                                <constraint firstAttribute="bottom" secondItem="Jdx-aK-L8x" secondAttribute="bottom" id="z0e-4X-mXY"/>
+                                            </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                    <integer key="value" value="4"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b8n-9f-9Gl" userLabel="Left Container">
+                                            <rect key="frame" x="62" y="21.333333333333329" width="142" height="70"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="23" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="Em7-61-ln8">
+                                                    <rect key="frame" x="0.0" y="0.0" width="142" height="70"/>
+                                                    <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="50"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="Em7-61-ln8" secondAttribute="bottom" id="Hby-89-jOl"/>
+                                                <constraint firstItem="Em7-61-ln8" firstAttribute="top" secondItem="b8n-9f-9Gl" secondAttribute="top" id="Ne0-Wc-bSD"/>
+                                                <constraint firstAttribute="trailing" secondItem="Em7-61-ln8" secondAttribute="trailing" id="TUG-ZL-X10"/>
+                                                <constraint firstItem="Em7-61-ln8" firstAttribute="leading" secondItem="b8n-9f-9Gl" secondAttribute="leading" id="Tog-ec-mV3"/>
+                                            </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                    <integer key="value" value="4"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ycD-yX-bAB" userLabel="Right Container">
+                                            <rect key="frame" x="210" y="21" width="142" height="70"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="23" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="Bnc-9r-EmQ">
+                                                    <rect key="frame" x="0.0" y="0.0" width="142" height="70"/>
+                                                    <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="50"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstItem="Bnc-9r-EmQ" firstAttribute="top" secondItem="ycD-yX-bAB" secondAttribute="top" id="A71-96-sLx"/>
+                                                <constraint firstItem="Bnc-9r-EmQ" firstAttribute="leading" secondItem="ycD-yX-bAB" secondAttribute="leading" id="CaC-ah-g1b"/>
+                                                <constraint firstAttribute="bottom" secondItem="Bnc-9r-EmQ" secondAttribute="bottom" id="d04-xu-oJ9"/>
+                                                <constraint firstAttribute="trailing" secondItem="Bnc-9r-EmQ" secondAttribute="trailing" id="jbs-nZ-5Iq"/>
+                                            </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                    <integer key="value" value="4"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </view>
                                     </subviews>
+                                    <color key="backgroundColor" red="0.99355429410934448" green="0.95594078302383423" blue="0.75071161985397339" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="bottomMargin" secondItem="Ka8-Mv-NSG" secondAttribute="bottom" multiplier="1.1" id="0hP-KH-c8H"/>
+                                        <constraint firstItem="ycD-yX-bAB" firstAttribute="centerY" secondItem="b8n-9f-9Gl" secondAttribute="centerY" id="LzM-tN-wx8"/>
+                                        <constraint firstItem="b8n-9f-9Gl" firstAttribute="leading" secondItem="Ka8-Mv-NSG" secondAttribute="leading" id="T0K-tT-2f7"/>
+                                        <constraint firstItem="Ka8-Mv-NSG" firstAttribute="centerX" secondItem="37f-cq-3Eg" secondAttribute="centerX" id="TV9-6s-KX1"/>
+                                        <constraint firstItem="ycD-yX-bAB" firstAttribute="trailing" secondItem="Ka8-Mv-NSG" secondAttribute="trailing" id="U1S-zP-dL6"/>
+                                        <constraint firstItem="Ka8-Mv-NSG" firstAttribute="width" secondItem="37f-cq-3Eg" secondAttribute="width" multiplier="0.7" id="Ytq-Mo-X0K"/>
+                                        <constraint firstItem="b8n-9f-9Gl" firstAttribute="bottom" secondItem="Ka8-Mv-NSG" secondAttribute="top" constant="-5" id="aJM-Qf-67M"/>
+                                        <constraint firstItem="b8n-9f-9Gl" firstAttribute="height" secondItem="Ka8-Mv-NSG" secondAttribute="height" multiplier="3" id="lmb-E6-S6R"/>
+                                        <constraint firstItem="b8n-9f-9Gl" firstAttribute="width" secondItem="Ka8-Mv-NSG" secondAttribute="width" multiplier="0.49" id="ltL-Qb-Aau"/>
+                                        <constraint firstItem="ycD-yX-bAB" firstAttribute="width" secondItem="b8n-9f-9Gl" secondAttribute="width" id="oVW-Y1-NdH"/>
+                                        <constraint firstItem="ycD-yX-bAB" firstAttribute="height" secondItem="b8n-9f-9Gl" secondAttribute="height" id="trr-nZ-pAO"/>
+                                        <constraint firstItem="Ka8-Mv-NSG" firstAttribute="height" secondItem="37f-cq-3Eg" secondAttribute="height" multiplier="0.1666" id="vOd-Yx-k3w"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
+                                    <outlet property="bottomContainerView" destination="Ka8-Mv-NSG" id="Hu6-PQ-6id"/>
+                                    <outlet property="hourLabel" destination="Em7-61-ln8" id="21Q-OH-uia"/>
+                                    <outlet property="leftContainerView" destination="b8n-9f-9Gl" id="5l0-oK-FiM"/>
+                                    <outlet property="longDateLabel" destination="Jdx-aK-L8x" id="xfD-JK-BiA"/>
+                                    <outlet property="minuteLabel" destination="Bnc-9r-EmQ" id="6bl-j5-OE9"/>
+                                    <outlet property="rightContainerView" destination="ycD-yX-bAB" id="DR9-EA-dpi"/>
                                     <segue destination="JEX-9P-axG" kind="show" identifier="showDetail" id="xhg-zT-V4g"/>
                                 </connections>
                             </tableViewCell>
@@ -97,11 +181,11 @@
                             <outlet property="delegate" destination="7bK-jq-Zjz" id="RA6-mI-bju"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Fireballs in sky" id="Zdf-7t-Un8"/>
+                    <navigationItem key="navigationItem" title="Fireballs!" id="Zdf-7t-Un8"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rux-fX-hf1" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-83" y="-405"/>
+            <point key="canvasLocation" x="-84.057971014492765" y="-405.16304347826087"/>
         </scene>
     </scenes>
 </document>

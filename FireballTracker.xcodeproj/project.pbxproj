@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1102DBEE1E6A1F1C009689A3 /* DayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1102DBED1E6A1F1C009689A3 /* DayCell.swift */; };
 		1168F49D1E66124000055E3D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1168F49C1E66124000055E3D /* AppDelegate.swift */; };
 		1168F4A01E66124000055E3D /* FireballTracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1168F49E1E66124000055E3D /* FireballTracker.xcdatamodeld */; };
 		1168F4A21E66124000055E3D /* FireballListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1168F4A11E66124000055E3D /* FireballListVC.swift */; };
@@ -47,6 +48,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1102DBED1E6A1F1C009689A3 /* DayCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayCell.swift; sourceTree = "<group>"; };
 		1168F4991E66124000055E3D /* FireballTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FireballTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1168F49C1E66124000055E3D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1168F49F1E66124000055E3D /* FireballTracker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FireballTracker.xcdatamodel; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 				1168F4D11E661E1F00055E3D /* FireballApiClient.swift */,
 				1172D2821E674871004BCA04 /* FireballParser.swift */,
 				1172D2841E6775F5004BCA04 /* FireballDataManager.swift */,
+				1102DBED1E6A1F1C009689A3 /* DayCell.swift */,
 			);
 			path = FireballTracker;
 			sourceTree = "<group>";
@@ -305,6 +308,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1172D2851E6775F5004BCA04 /* FireballDataManager.swift in Sources */,
+				1102DBEE1E6A1F1C009689A3 /* DayCell.swift in Sources */,
 				1168F49D1E66124000055E3D /* AppDelegate.swift in Sources */,
 				1168F4A01E66124000055E3D /* FireballTracker.xcdatamodeld in Sources */,
 				1168F4D01E66174100055E3D /* FireballModels.swift in Sources */,

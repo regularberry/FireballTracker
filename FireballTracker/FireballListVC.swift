@@ -140,10 +140,10 @@ class FireballListVC: UITableViewController, NSFetchedResultsControllerDelegate 
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "DayCell", for: indexPath) as! DayCell
         if let controller = fetchedResultsController {
             let fireball = controller.object(at: indexPath)
-            cell.textLabel!.text = fireball.dateStr
+            cell.fireball = fireball
         }
         return cell
     }
