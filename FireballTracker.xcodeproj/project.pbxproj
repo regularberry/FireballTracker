@@ -244,7 +244,7 @@
 				TargetAttributes = {
 					1168F4981E66124000055E3D = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = PFBHBN6Z3S;
+						DevelopmentTeam = VHK5T9DC9A;
 						ProvisioningStyle = Automatic;
 					};
 					1168F4B11E66124000055E3D = {
@@ -483,7 +483,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = PFBHBN6Z3S;
+				DEVELOPMENT_TEAM = VHK5T9DC9A;
 				INFOPLIST_FILE = FireballTracker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.regularberry.FireballTracker;
@@ -497,7 +497,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = PFBHBN6Z3S;
+				DEVELOPMENT_TEAM = VHK5T9DC9A;
 				INFOPLIST_FILE = FireballTracker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.regularberry.FireballTracker;

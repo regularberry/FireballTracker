@@ -12,7 +12,7 @@ import CoreData
 public struct FireballDataManager {
     
     let container: NSPersistentContainer
-    
+
     public init(inMemory: Bool = false) {
         self.container = NSPersistentContainer(name: "FireballTracker")
         
@@ -46,10 +46,9 @@ public struct FireballDataManager {
                 ballMO.date = fireball.date as NSDate
                 ballMO.latitude = fireball.latitude
                 ballMO.longitude = fireball.longitude
+                saveContext()
             }
         }
-        
-        saveContext()
     }
     
     public func replaceAllFireballs(with jsonFireballs: [FireballJSON]) {
@@ -61,6 +60,10 @@ public struct FireballDataManager {
     }
     
     private func saveContext() {
+        guard container.viewContext.hasChanges else {
+            return
+        }
+        
         do {
             try container.viewContext.save()
         } catch let error {
