@@ -30,6 +30,7 @@
 		118D21A51E6B36950007B135 /* meteor@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 118D21A41E6B36950007B135 /* meteor@3x.png */; };
 		118D21A71E6B409D0007B135 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118D21A61E6B409D0007B135 /* Extensions.swift */; };
 		1194A7021E6B8E4C008DD960 /* FireballListVCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1194A7011E6B8E4C008DD960 /* FireballListVCTests.swift */; };
+		1194A7071E6B962F008DD960 /* FireballListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1194A7061E6B962F008DD960 /* FireballListDataSource.swift */; };
 		11CE5F891E6B47E500500269 /* ActivityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11CE5F881E6B47E500500269 /* ActivityCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -81,6 +82,7 @@
 		118D21A41E6B36950007B135 /* meteor@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "meteor@3x.png"; sourceTree = "<group>"; };
 		118D21A61E6B409D0007B135 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		1194A7011E6B8E4C008DD960 /* FireballListVCTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FireballListVCTests.swift; sourceTree = "<group>"; };
+		1194A7061E6B962F008DD960 /* FireballListDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FireballListDataSource.swift; sourceTree = "<group>"; };
 		11CE5F881E6B47E500500269 /* ActivityCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -132,12 +134,14 @@
 		1168F49B1E66124000055E3D /* FireballTracker */ = {
 			isa = PBXGroup;
 			children = (
+				11CE5F881E6B47E500500269 /* ActivityCell.swift */,
 				1168F49C1E66124000055E3D /* AppDelegate.swift */,
 				1168F4A81E66124000055E3D /* Assets.xcassets */,
 				1102DBED1E6A1F1C009689A3 /* DayCell.swift */,
 				118D21A61E6B409D0007B135 /* Extensions.swift */,
 				1168F4D11E661E1F00055E3D /* FireballApiClient.swift */,
 				1172D2841E6775F5004BCA04 /* FireballDataManager.swift */,
+				1194A7061E6B962F008DD960 /* FireballListDataSource.swift */,
 				1168F4A11E66124000055E3D /* FireballListVC.swift */,
 				1168F4A31E66124000055E3D /* FireballLocationVC.swift */,
 				1168F4CF1E66174100055E3D /* FireballModels.swift */,
@@ -147,7 +151,6 @@
 				1168F4AA1E66124000055E3D /* LaunchScreen.storyboard */,
 				1168F4A51E66124000055E3D /* Main.storyboard */,
 				118D21A41E6B36950007B135 /* meteor@3x.png */,
-				11CE5F881E6B47E500500269 /* ActivityCell.swift */,
 			);
 			path = FireballTracker;
 			sourceTree = "<group>";
@@ -326,6 +329,7 @@
 				1168F4A01E66124000055E3D /* FireballTracker.xcdatamodeld in Sources */,
 				1168F4D01E66174100055E3D /* FireballModels.swift in Sources */,
 				118D21A71E6B409D0007B135 /* Extensions.swift in Sources */,
+				1194A7071E6B962F008DD960 /* FireballListDataSource.swift in Sources */,
 				1168F4D21E661E1F00055E3D /* FireballApiClient.swift in Sources */,
 				1168F4A21E66124000055E3D /* FireballListVC.swift in Sources */,
 				1168F4A41E66124000055E3D /* FireballLocationVC.swift in Sources */,

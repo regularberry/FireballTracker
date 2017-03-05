@@ -11,99 +11,44 @@ import CoreData
 
 class FireballListVC: UITableViewController, NSFetchedResultsControllerDelegate {
     
-    lazy var dataManager: FireballDataManager = FireballDataManager()
-    var fetchedResultsController: NSFetchedResultsController<FireballMO>?
-    
-    let fireballApiClient = FireballApiClient()
-    var fireballs: [FireballMO] = []
-    
-    var possiblyMoreData = true
+    lazy var fireballDataSource: FireballListDataSource = FireballListDataSource(fetchedDelegate: self)
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        dataManager.loadStore(completion: {(description, error) in
-            guard error == nil else {
-                print("Data Store failed to load: \(error!.localizedDescription)")
-                return
-            }
-            self.setupFetchedResultsController()
-        })
         
         refreshControl = UIRefreshControl()
         refreshControl!.addTarget(self, action: #selector(FireballListVC.refreshData), for: .valueChanged)
-    }
-    
-    func setupFetchedResultsController() {
-        let fetch = NSFetchRequest<FireballMO>(entityName: "Fireball")
-        fetch.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
         
-        self.fetchedResultsController = NSFetchedResultsController(fetchRequest: fetch, managedObjectContext: dataManager.container.viewContext, sectionNameKeyPath: nil, cacheName: nil)
-        self.fetchedResultsController?.delegate = self
-        
-        do {
-            try self.fetchedResultsController?.performFetch()
-            if noFireballs() {
-                refreshData()
+        tableView.dataSource = fireballDataSource
+        fireballDataSource.loadData(completionHandler: {(error) in
+            guard error == nil else {
+                print(error!.localizedDescription)
+                return
             }
-        } catch let error {
-            print(error.localizedDescription)
-        }
-    }
-    
-    func noFireballs() -> Bool {
-        guard let fetched = fetchedResultsController?.fetchedObjects else {
-            print("No fireballs? We haven't tried to fetch them yet.")
-            return false
-        }
-        return fetched.count == 0
+            if self.fireballDataSource.noFireballs() {
+                self.refreshData()
+            }
+        })
     }
     
     func refreshData() {
-        fireballApiClient.getLatestFireballs(completion: { (jsonFireballs, error) in
+        fireballDataSource.refreshData(completionHandler: { (error) in
             self.refreshControl?.endRefreshing()
             
-            guard error == nil else {
-                print(error!.localizedDescription)
-                return
-            }
-            
-            guard jsonFireballs.count > 0 else {
-                self.possiblyMoreData = false
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
+            switch error {
+            case is DataSourceError:
+                
+                switch (error as! DataSourceError) {
+                case .completelyConsumed:
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                    }
                 }
-                return
-            }
-            
-            self.dataManager.replaceAllFireballs(with: jsonFireballs)
-        })
-    }
-    
-    func getOlderData() {
-        guard let oldestDate = getOldestDate() else {
-            return
-        }
-        
-        fireballApiClient.getFireballs(beforeDate: oldestDate, completion: { (jsonFireballs, error) in
-            guard error == nil else {
+                
+            case let error:
                 print(error!.localizedDescription)
-                return
             }
-            
-            guard jsonFireballs.count > 0 else {
-                return
-            }
-            
-            self.dataManager.save(jsonFireballs: jsonFireballs)
         })
-    }
-    
-    func getOldestDate() -> Date? {
-        let fireballs = dataManager.allExistingFireballs()
-        guard let last = fireballs.last else {
-            return nil
-        }
-        return last.swiftDate
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -111,60 +56,21 @@ class FireballListVC: UITableViewController, NSFetchedResultsControllerDelegate 
             guard let detail = segue.destination as? FireballLocationVC else {
                 return
             }
-            
-            if let indexPath = self.tableView.indexPathForSelectedRow,
-                let controller = fetchedResultsController {
-                let fireball = controller.object(at: indexPath)
-                detail.fireball = fireball
+            guard let indexPath = self.tableView.indexPathForSelectedRow else {
+                return
             }
+            guard let fireball = fireballDataSource.fireball(at: indexPath) else {
+                return
+            }
+            
+            detail.fireball = fireball
         }
     }
 
-    // MARK: - Table View
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        guard let sections = fetchedResultsController?.sections else {
-            return 1
-        }
-        return sections.count
-    }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let extraRow = possiblyMoreData ? 1 : 0
-        return numberOfRows(inSection: section) + extraRow
-    }
-    
-    func numberOfRows(inSection: Int) -> Int {
-        guard let sections = fetchedResultsController?.sections else {
-            return 0
-        }
-        
-        guard inSection < sections.count else {
-            return 0
-        }
-        
-        return sections[inSection].numberOfObjects
-    }
-
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        if indexPath.row == numberOfRows(inSection: 0) {
-            let activityCell = tableView.dequeueReusableCell(withIdentifier: "ActivityCell")!
-            return activityCell
-        }
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "DayCell", for: indexPath) as! DayCell
-        if let controller = fetchedResultsController {
-            let fireball = controller.object(at: indexPath)
-            cell.fireball = fireball
-        }
-        return cell
-    }
-    
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if indexPath.row == numberOfRows(inSection: 0) - 1 {
-            if possiblyMoreData {
-                getOlderData()
+        if indexPath.row == fireballDataSource.numberOfRows() - 1 {
+            if fireballDataSource.possiblyMoreData {
+                fireballDataSource.getOlderData()
             }
         }
     }
