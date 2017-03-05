@@ -60,33 +60,30 @@ class FireballListDataSource: NSObject, UITableViewDataSource {
                 return
             }
             
-            guard jsonFireballs.count > 0 else {
-                self.possiblyMoreData = false
-                completionHandler(DataSourceError.completelyConsumed)
-                return
-            }
-            
             self.dataManager.replaceAllFireballs(with: jsonFireballs)
             completionHandler(nil)
         })
     }
     
-    func getOlderData() {
+    func getOlderData(completionHandler: @escaping LoadDataHandler) {
         guard let oldestDate = getOldestDate() else {
             return
         }
         
         apiClient.getFireballs(beforeDate: oldestDate, completion: { (jsonFireballs, error) in
             guard error == nil else {
-                print(error!.localizedDescription)
+                completionHandler(error!)
                 return
             }
             
             guard jsonFireballs.count > 0 else {
+                self.possiblyMoreData = false
+                completionHandler(DataSourceError.completelyConsumed)
                 return
             }
             
             self.dataManager.save(jsonFireballs: jsonFireballs)
+            completionHandler(nil)
         })
     }
     

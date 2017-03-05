@@ -35,17 +35,7 @@ class FireballListVC: UITableViewController, NSFetchedResultsControllerDelegate 
         fireballDataSource.refreshData(completionHandler: { (error) in
             self.refreshControl?.endRefreshing()
             
-            switch error {
-            case is DataSourceError:
-                
-                switch (error as! DataSourceError) {
-                case .completelyConsumed:
-                    DispatchQueue.main.async {
-                        self.tableView.reloadData()
-                    }
-                }
-                
-            case let error:
+            if error != nil {
                 print(error!.localizedDescription)
             }
         })
@@ -70,7 +60,18 @@ class FireballListVC: UITableViewController, NSFetchedResultsControllerDelegate 
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if indexPath.row == fireballDataSource.numberOfRows() - 1 {
             if fireballDataSource.possiblyMoreData {
-                fireballDataSource.getOlderData()
+                fireballDataSource.getOlderData(completionHandler: { (error) in
+                    /*switch error {
+                    case is DataSourceError:
+                        
+                        switch (error as! DataSourceError) {
+                        case .completelyConsumed:
+                            DispatchQueue.main.async {
+                                self.tableView.reloadData()
+                            }
+                        }
+                    }*/
+                })
             }
         }
     }
