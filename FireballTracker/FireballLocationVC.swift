@@ -63,6 +63,9 @@ class FireballLocationVC: UIViewController, MKMapViewDelegate {
         guard !meteorAnimating else {
             return
         }
+        guard let fireball = self.fireball else {
+            return
+        }
         
         mapView.isScrollEnabled = false
         meteorAnimating = true
@@ -76,10 +79,7 @@ class FireballLocationVC: UIViewController, MKMapViewDelegate {
             self.meteorImageView.transform = CGAffineTransform(scaleX: scale, y: scale)
             self.meteorImageView.center = self.mapView.bounds.localCenter
             self.meteorImageView.alpha = 0.0
-    
-            if let fireball = self.fireball {
-                self.mapView.centerCoordinate = fireball.coordinate
-            }
+            self.mapView.centerCoordinate = fireball.coordinate
     
         }, completion: { (completed) in
             self.meteorImageView.removeFromSuperview()
