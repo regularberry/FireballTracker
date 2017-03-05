@@ -18,13 +18,13 @@ class FireballListDataSource: NSObject, UITableViewDataSource {
     
     public typealias LoadDataHandler = (Error?) -> Void
     
-    let dataManager: FireballDataManager
+    let dataManager: FireballDataStack
     let apiClient: FireballApiClient
     var fetchedDelegate: NSFetchedResultsControllerDelegate?
     var fetchedResultsController: NSFetchedResultsController<FireballMO>?
     var possiblyMoreData = true
     
-    init(fetchedDelegate: NSFetchedResultsControllerDelegate? = nil, dataManager: FireballDataManager = FireballDataManager(), apiClient: FireballApiClient = FireballApiClient()) {
+    init(fetchedDelegate: NSFetchedResultsControllerDelegate? = nil, dataManager: FireballDataStack = FireballDataStack(), apiClient: FireballApiClient = FireballApiClient()) {
         self.fetchedDelegate = fetchedDelegate
         self.dataManager = dataManager
         self.apiClient = apiClient
@@ -37,11 +37,7 @@ class FireballListDataSource: NSObject, UITableViewDataSource {
                 return
             }
             
-            let fetch = NSFetchRequest<FireballMO>(entityName: "Fireball")
-            fetch.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
-            
-            self.fetchedResultsController = NSFetchedResultsController(fetchRequest: fetch, managedObjectContext: self.dataManager.container.viewContext, sectionNameKeyPath: nil, cacheName: nil)
-            self.fetchedResultsController?.delegate = self.fetchedDelegate
+            self.loadFetchController()
             
             do {
                 try self.fetchedResultsController?.performFetch()
@@ -52,7 +48,15 @@ class FireballListDataSource: NSObject, UITableViewDataSource {
         })
     }
     
-    func refreshData(completionHandler: @escaping LoadDataHandler) {
+    func loadFetchController() {
+        let fetch = NSFetchRequest<FireballMO>(entityName: "Fireball")
+        fetch.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
+        
+        self.fetchedResultsController = NSFetchedResultsController(fetchRequest: fetch, managedObjectContext: self.dataManager.container.viewContext, sectionNameKeyPath: nil, cacheName: nil)
+        self.fetchedResultsController?.delegate = self.fetchedDelegate
+    }
+    
+    func getFreshData(completionHandler: @escaping LoadDataHandler) {
         apiClient.getLatestFireballs(completion: { (jsonFireballs, error) in
             
             guard error == nil else {

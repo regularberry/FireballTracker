@@ -1,5 +1,5 @@
 //
-//  FireballDataManager.swift
+//  FireballDataStack.swift
 //  FireballTracker
 //
 //  Created by Sean Berry on 3/1/17.
@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-public struct FireballDataManager {
+public struct FireballDataStack {
     
     let container: NSPersistentContainer
 
@@ -20,7 +20,7 @@ public struct FireballDataManager {
             let description = NSPersistentStoreDescription()
             description.type = NSInMemoryStoreType
             self.container.persistentStoreDescriptions = [description]
-        }
+        }        
     }
     
     public func loadStore(completion block: @escaping (NSPersistentStoreDescription, Error?) -> Void) {

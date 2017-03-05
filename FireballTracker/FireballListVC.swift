@@ -17,7 +17,7 @@ class FireballListVC: UITableViewController, NSFetchedResultsControllerDelegate 
         super.viewDidLoad()
         
         refreshControl = UIRefreshControl()
-        refreshControl!.addTarget(self, action: #selector(FireballListVC.refreshData), for: .valueChanged)
+        refreshControl!.addTarget(self, action: #selector(FireballListVC.getFreshData), for: .valueChanged)
         
         tableView.dataSource = fireballDataSource
         fireballDataSource.loadData(completionHandler: {(error) in
@@ -26,13 +26,13 @@ class FireballListVC: UITableViewController, NSFetchedResultsControllerDelegate 
                 return
             }
             if self.fireballDataSource.noFireballs() {
-                self.refreshData()
+                self.getFreshData()
             }
         })
     }
     
-    func refreshData() {
-        fireballDataSource.refreshData(completionHandler: { (error) in
+    func getFreshData() {
+        fireballDataSource.getFreshData(completionHandler: { (error) in
             self.refreshControl?.endRefreshing()
             
             if error != nil {
