@@ -1,5 +1,5 @@
 //
-//  FireballDataManagerTests.swift
+//  FireballDataStackTests.swift
 //  FireballTracker
 //
 //  Created by Sean Berry on 3/2/17.
@@ -9,15 +9,15 @@
 import XCTest
 @testable import FireballTracker
 
-class FireballDataManagerTests: XCTestCase {
-    var dataManager: FireballDataManager!
+class FireballDataStackTests: XCTestCase {
+    var dataStack: FireballDataStack!
     
     override func setUp() {
         super.setUp()
         
-        dataManager = FireballDataManager(inMemory: true)
+        dataStack = FireballDataStack(inMemory: true)
         let loadStoreExpectation = expectation(description: "Load Core Data store")
-        dataManager.loadStore(completion: {(description, error) in
+        dataStack.loadStore(completion: {(description, error) in
             guard error == nil else {
                 print("Failed to load data store: \(error!.localizedDescription)")
                 return
@@ -33,23 +33,23 @@ class FireballDataManagerTests: XCTestCase {
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
-        dataManager = nil
+        dataStack = nil
     }
     
-    func test_thatDataManager_saves() {
+    func test_thatDataStack_saves() {
         // GIVEN: two fireball JSONs
         let fireballOne = FireballJSON(date: Date(), latitude: 1, longitude: -1)
         let fireballTwo = FireballJSON(date: Date(), latitude: 2, longitude: -2)
         
         // WHEN: they're saved to the data manager
-        dataManager.save(jsonFireballs: [fireballOne, fireballTwo])
+        dataStack.save(jsonFireballs: [fireballOne, fireballTwo])
         
         // THEN: dataManager returns 2 results
-        let fireballCount = dataManager.allExistingFireballs().count
+        let fireballCount = dataStack.allExistingFireballs().count
         XCTAssertEqual(fireballCount, 2)
     }
     
-    func test_thatDataManager_doesntSaveDuplicates() {
+    func test_thatDataStack_doesntSaveDuplicates() {
         // GIVEN: two identical fireballJSONs
         let date = Date()
         let lat: Double = 5
@@ -58,14 +58,14 @@ class FireballDataManagerTests: XCTestCase {
         let fireballTwo = FireballJSON(date: date, latitude: lat, longitude: lon)
         
         // WHEN: they're saved to the data manager
-        dataManager.save(jsonFireballs: [fireballOne, fireballTwo])
+        dataStack.save(jsonFireballs: [fireballOne, fireballTwo])
         
         // THEN: dataManager returns 1 result
-        let fireballCount = dataManager.allExistingFireballs().count
+        let fireballCount = dataStack.allExistingFireballs().count
         XCTAssertEqual(fireballCount, 1)
     }
     
-    func test_thatDataManager_accuratelySaves() {
+    func test_thatDataStack_accuratelySaves() {
         // GIVEN: a fireball JSON
         let date = Date(timeIntervalSince1970: 2000)
         let lat: Double = 1.5
@@ -73,10 +73,10 @@ class FireballDataManagerTests: XCTestCase {
         let fireball = FireballJSON(date: date, latitude: lat, longitude: lon)
         
         // WHEN: it's saved to the data manager
-        dataManager.save(jsonFireballs: [fireball])
+        dataStack.save(jsonFireballs: [fireball])
         
         // THEN: dataManager returns the same data as went in
-        let fireballMO = dataManager.allExistingFireballs()[0]
+        let fireballMO = dataStack.allExistingFireballs()[0]
         XCTAssertEqual(fireballMO.swiftDate, date)
         XCTAssertEqual(fireballMO.latitude, lat)
         XCTAssertEqual(fireballMO.longitude, lon)
@@ -84,7 +84,7 @@ class FireballDataManagerTests: XCTestCase {
         XCTAssertEqual(fireballMO.coordinate.longitude, lon)
     }
     
-    func test_thatDataManager_replaces() {
+    func test_thatDataStack_replaces() {
         // GIVEN: 10 fireballs and 4 fireballs
         var tenFireballs = [FireballJSON]()
         for i in 1...10 {
@@ -96,16 +96,16 @@ class FireballDataManagerTests: XCTestCase {
         }
         
         // WHEN: saved 10 fireballs
-        dataManager.save(jsonFireballs: tenFireballs)
+        dataStack.save(jsonFireballs: tenFireballs)
         
         // THEN: total fireballs = 10
-        XCTAssertEqual(dataManager.allExistingFireballs().count, 10)
+        XCTAssertEqual(dataStack.allExistingFireballs().count, 10)
         
         // WHEN: replaced 10 fireballs with 4
-        dataManager.replaceAllFireballs(with: fourFireballs)
+        dataStack.replaceAllFireballs(with: fourFireballs)
         
         // THEN: total fireballs = 4
-        XCTAssertEqual(dataManager.allExistingFireballs().count, 4)
+        XCTAssertEqual(dataStack.allExistingFireballs().count, 4)
     }
     
 }

@@ -18,20 +18,20 @@ class FireballListDataSource: NSObject, UITableViewDataSource {
     
     public typealias LoadDataHandler = (Error?) -> Void
     
-    let dataManager: FireballDataStack
+    let dataStack: FireballDataStack
     let apiClient: FireballApiClient
     var fetchedDelegate: NSFetchedResultsControllerDelegate?
     var fetchedResultsController: NSFetchedResultsController<FireballMO>?
     var possiblyMoreData = true
     
-    init(fetchedDelegate: NSFetchedResultsControllerDelegate? = nil, dataManager: FireballDataStack = FireballDataStack(), apiClient: FireballApiClient = FireballApiClient()) {
+    init(fetchedDelegate: NSFetchedResultsControllerDelegate? = nil, dataStack: FireballDataStack = FireballDataStack(), apiClient: FireballApiClient = FireballApiClient()) {
         self.fetchedDelegate = fetchedDelegate
-        self.dataManager = dataManager
+        self.dataStack = dataStack
         self.apiClient = apiClient
     }
     
     func loadData(completionHandler: @escaping LoadDataHandler) {
-        dataManager.loadStore(completion: {(description, error) in
+        dataStack.loadStore(completion: {(description, error) in
             guard error == nil else {
                 completionHandler(error!)
                 return
@@ -52,8 +52,16 @@ class FireballListDataSource: NSObject, UITableViewDataSource {
         let fetch = NSFetchRequest<FireballMO>(entityName: "Fireball")
         fetch.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
         
-        self.fetchedResultsController = NSFetchedResultsController(fetchRequest: fetch, managedObjectContext: self.dataManager.container.viewContext, sectionNameKeyPath: nil, cacheName: nil)
+        self.fetchedResultsController = NSFetchedResultsController(fetchRequest: fetch, managedObjectContext: self.dataStack.container.viewContext, sectionNameKeyPath: nil, cacheName: nil)
         self.fetchedResultsController?.delegate = self.fetchedDelegate
+    }
+    
+    func reloadData() {
+        do {
+            try self.fetchedResultsController?.performFetch()
+        } catch let error {
+            print(error.localizedDescription)
+        }
     }
     
     func getFreshData(completionHandler: @escaping LoadDataHandler) {
@@ -64,7 +72,7 @@ class FireballListDataSource: NSObject, UITableViewDataSource {
                 return
             }
             
-            self.dataManager.replaceAllFireballs(with: jsonFireballs)
+            self.dataStack.replaceAllFireballs(with: jsonFireballs)
             completionHandler(nil)
         })
     }
@@ -86,13 +94,13 @@ class FireballListDataSource: NSObject, UITableViewDataSource {
                 return
             }
             
-            self.dataManager.save(jsonFireballs: jsonFireballs)
+            self.dataStack.save(jsonFireballs: jsonFireballs)
             completionHandler(nil)
         })
     }
     
     func getOldestDate() -> Date? {
-        let fireballs = dataManager.allExistingFireballs()
+        let fireballs = dataStack.allExistingFireballs()
         guard let last = fireballs.last else {
             return nil
         }

@@ -22,7 +22,7 @@
 		1172D2831E674871004BCA04 /* FireballParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1172D2821E674871004BCA04 /* FireballParser.swift */; };
 		1172D2851E6775F5004BCA04 /* FireballDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1172D2841E6775F5004BCA04 /* FireballDataStack.swift */; };
 		118D21961E688FF70007B135 /* FireballModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118D21951E688FF70007B135 /* FireballModelTests.swift */; };
-		118D21991E6895860007B135 /* FireballDataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118D21981E6895860007B135 /* FireballDataManagerTests.swift */; };
+		118D21991E6895860007B135 /* FireballDataStackTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118D21981E6895860007B135 /* FireballDataStackTests.swift */; };
 		118D219D1E69E3610007B135 /* FireballParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118D219C1E69E3610007B135 /* FireballParserTests.swift */; };
 		118D21A01E69E55D0007B135 /* Single.json in Resources */ = {isa = PBXBuildFile; fileRef = 118D219E1E69E55D0007B135 /* Single.json */; };
 		118D21A11E69E55D0007B135 /* Twenty.json in Resources */ = {isa = PBXBuildFile; fileRef = 118D219F1E69E55D0007B135 /* Twenty.json */; };
@@ -31,6 +31,7 @@
 		118D21A71E6B409D0007B135 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118D21A61E6B409D0007B135 /* Extensions.swift */; };
 		1194A7021E6B8E4C008DD960 /* FireballListVCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1194A7011E6B8E4C008DD960 /* FireballListVCTests.swift */; };
 		1194A7071E6B962F008DD960 /* FireballListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1194A7061E6B962F008DD960 /* FireballListDataSource.swift */; };
+		1194A70F1E6CC552008DD960 /* FireballListDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1194A70E1E6CC552008DD960 /* FireballListDataSourceTests.swift */; };
 		11CE5F891E6B47E500500269 /* ActivityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11CE5F881E6B47E500500269 /* ActivityCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -73,7 +74,7 @@
 		1172D2821E674871004BCA04 /* FireballParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FireballParser.swift; sourceTree = "<group>"; };
 		1172D2841E6775F5004BCA04 /* FireballDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FireballDataStack.swift; sourceTree = "<group>"; };
 		118D21951E688FF70007B135 /* FireballModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FireballModelTests.swift; sourceTree = "<group>"; };
-		118D21981E6895860007B135 /* FireballDataManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FireballDataManagerTests.swift; sourceTree = "<group>"; };
+		118D21981E6895860007B135 /* FireballDataStackTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FireballDataStackTests.swift; sourceTree = "<group>"; };
 		118D219A1E69D9520007B135 /* FireballApiClientTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FireballApiClientTests.swift; sourceTree = "<group>"; };
 		118D219C1E69E3610007B135 /* FireballParserTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FireballParserTests.swift; sourceTree = "<group>"; };
 		118D219E1E69E55D0007B135 /* Single.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Single.json; sourceTree = "<group>"; };
@@ -83,6 +84,7 @@
 		118D21A61E6B409D0007B135 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		1194A7011E6B8E4C008DD960 /* FireballListVCTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FireballListVCTests.swift; sourceTree = "<group>"; };
 		1194A7061E6B962F008DD960 /* FireballListDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FireballListDataSource.swift; sourceTree = "<group>"; };
+		1194A70E1E6CC552008DD960 /* FireballListDataSourceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FireballListDataSourceTests.swift; sourceTree = "<group>"; };
 		11CE5F881E6B47E500500269 /* ActivityCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -164,10 +166,11 @@
 				1168F4B61E66124000055E3D /* FireballTrackerTests.swift */,
 				1168F4B81E66124000055E3D /* Info.plist */,
 				118D21951E688FF70007B135 /* FireballModelTests.swift */,
-				118D21981E6895860007B135 /* FireballDataManagerTests.swift */,
+				118D21981E6895860007B135 /* FireballDataStackTests.swift */,
 				118D219A1E69D9520007B135 /* FireballApiClientTests.swift */,
 				118D219C1E69E3610007B135 /* FireballParserTests.swift */,
 				1194A7011E6B8E4C008DD960 /* FireballListVCTests.swift */,
+				1194A70E1E6CC552008DD960 /* FireballListDataSourceTests.swift */,
 			);
 			path = FireballTrackerTests;
 			sourceTree = "<group>";
@@ -342,9 +345,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				118D21961E688FF70007B135 /* FireballModelTests.swift in Sources */,
+				1194A70F1E6CC552008DD960 /* FireballListDataSourceTests.swift in Sources */,
 				118D219D1E69E3610007B135 /* FireballParserTests.swift in Sources */,
 				1168F4B71E66124000055E3D /* FireballTrackerTests.swift in Sources */,
-				118D21991E6895860007B135 /* FireballDataManagerTests.swift in Sources */,
+				118D21991E6895860007B135 /* FireballDataStackTests.swift in Sources */,
 				1194A7021E6B8E4C008DD960 /* FireballListVCTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
