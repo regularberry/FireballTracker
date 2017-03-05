@@ -26,15 +26,16 @@ class DayCell: UITableViewCell {
     
     func updateView() {
         if let fireball = fireball {
-            let calendar = Calendar.current
-            let components = calendar.dateComponents([.hour, .minute, .weekday, .month, .year], from: fireball.swiftDate)
-            hourLabel.text = "\(components.hour!)"
-            minuteLabel.text = "\(components.minute!)"
-            
             let formatter = DateFormatter()
             formatter.timeZone = TimeZone(secondsFromGMT: 0)
-            formatter.dateFormat = "EEEE  MM - yy"
             
+            formatter.dateFormat = "HH"
+            hourLabel.text = formatter.string(from: fireball.swiftDate)
+            
+            formatter.dateFormat = "mm"
+            minuteLabel.text = formatter.string(from: fireball.swiftDate)
+            
+            formatter.dateFormat = "EEEE   dd - MM - yy"
             longDateLabel.text = formatter.string(from: fireball.swiftDate)
         } else {
             hourLabel.text = ""

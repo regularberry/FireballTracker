@@ -30,7 +30,7 @@
         <!--Fireball Location-->
         <scene sceneID="yUG-lL-AsK">
             <objects>
-                <viewController title="Detail" extendedLayoutIncludesOpaqueBars="YES" id="JEX-9P-axG" userLabel="Fireball Location" customClass="FireballLocationVC" customModule="FireballTracker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LocationVC" title="Detail" extendedLayoutIncludesOpaqueBars="YES" id="JEX-9P-axG" userLabel="Fireball Location" customClass="FireballLocationVC" customModule="FireballTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="SYR-Wa-9uf"/>
                         <viewControllerLayoutGuide type="bottom" id="GAO-Cl-Wes"/>
@@ -76,7 +76,7 @@
         <!--Fireball List-->
         <scene sceneID="smW-Zh-WAh">
             <objects>
-                <tableViewController title="Master" clearsSelectionOnViewWillAppear="NO" id="7bK-jq-Zjz" userLabel="Fireball List" customClass="FireballListVC" customModule="FireballTracker" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="ListVC" title="Master" clearsSelectionOnViewWillAppear="NO" id="7bK-jq-Zjz" userLabel="Fireball List" customClass="FireballListVC" customModule="FireballTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="140" sectionHeaderHeight="22" sectionFooterHeight="22" id="r7i-6Z-zg0">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

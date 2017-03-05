@@ -7,7 +7,7 @@
 //
 
 import XCTest
-import FireballTracker
+@testable import FireballTracker
 
 class FireballDataManagerTests: XCTestCase {
     var dataManager: FireballDataManager!

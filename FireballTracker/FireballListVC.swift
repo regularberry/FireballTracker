@@ -19,7 +19,6 @@ class FireballListVC: UITableViewController, NSFetchedResultsControllerDelegate 
     
     var possiblyMoreData = true
 
-    @IBOutlet weak var footerView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
         dataManager.loadStore(completion: {(description, error) in
