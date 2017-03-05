@@ -22,7 +22,7 @@ class FireballListVC: UITableViewController, NSFetchedResultsControllerDelegate 
         tableView.dataSource = fireballDataSource
         fireballDataSource.loadData(completionHandler: {(error) in
             guard error == nil else {
-                print(error!.localizedDescription)
+                self.processDataError(error: error!)
                 return
             }
             if self.fireballDataSource.noFireballs() {
@@ -34,11 +34,34 @@ class FireballListVC: UITableViewController, NSFetchedResultsControllerDelegate 
     func getFreshData() {
         fireballDataSource.getFreshData(completionHandler: { (error) in
             self.refreshControl?.endRefreshing()
-            
-            if error != nil {
-                print(error!.localizedDescription)
-            }
+            self.processDataError(error: error)
         })
+    }
+    
+    func getOlderData() {
+        guard fireballDataSource.possiblyMoreData else {
+            return
+        }
+        
+        fireballDataSource.getOlderData(completionHandler: { (error) in
+            self.processDataError(error: error)
+        })
+    }
+    
+    func processDataError(error: Error?) {
+        guard let error = error else {
+            return
+        }
+        
+        switch error {
+        case DataSourceError.completelyConsumed:
+            // Hide the bottom activity cell
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        case let error:
+            print(error.localizedDescription)
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -57,22 +80,10 @@ class FireballListVC: UITableViewController, NSFetchedResultsControllerDelegate 
         }
     }
 
-    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {        
+        // Auto-retrieve more data when user gets to the bottom of the table view
         if indexPath.row == fireballDataSource.numberOfRows() - 1 {
-            if fireballDataSource.possiblyMoreData {
-                fireballDataSource.getOlderData(completionHandler: { (error) in
-                    /*switch error {
-                    case is DataSourceError:
-                        
-                        switch (error as! DataSourceError) {
-                        case .completelyConsumed:
-                            DispatchQueue.main.async {
-                                self.tableView.reloadData()
-                            }
-                        }
-                    }*/
-                })
-            }
+            getOlderData()
         }
     }
     
