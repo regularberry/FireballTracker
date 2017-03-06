@@ -136,9 +136,10 @@
 		1168F49B1E66124000055E3D /* FireballTracker */ = {
 			isa = PBXGroup;
 			children = (
+				1168F4AD1E66124000055E3D /* Info.plist */,
+				118D21A41E6B36950007B135 /* meteor@3x.png */,
 				11CE5F881E6B47E500500269 /* ActivityCell.swift */,
 				1168F49C1E66124000055E3D /* AppDelegate.swift */,
-				1168F4A81E66124000055E3D /* Assets.xcassets */,
 				1102DBED1E6A1F1C009689A3 /* DayCell.swift */,
 				118D21A61E6B409D0007B135 /* Extensions.swift */,
 				1168F4D11E661E1F00055E3D /* FireballApiClient.swift */,
@@ -148,11 +149,10 @@
 				1168F4A31E66124000055E3D /* FireballLocationVC.swift */,
 				1168F4CF1E66174100055E3D /* FireballModels.swift */,
 				1172D2821E674871004BCA04 /* FireballParser.swift */,
+				1168F4A81E66124000055E3D /* Assets.xcassets */,
 				1168F49E1E66124000055E3D /* FireballTracker.xcdatamodeld */,
-				1168F4AD1E66124000055E3D /* Info.plist */,
 				1168F4AA1E66124000055E3D /* LaunchScreen.storyboard */,
 				1168F4A51E66124000055E3D /* Main.storyboard */,
-				118D21A41E6B36950007B135 /* meteor@3x.png */,
 			);
 			path = FireballTracker;
 			sourceTree = "<group>";
@@ -160,17 +160,17 @@
 		1168F4B51E66124000055E3D /* FireballTrackerTests */ = {
 			isa = PBXGroup;
 			children = (
-				118D21A21E69E82B0007B135 /* SingleNegative.json */,
 				118D219E1E69E55D0007B135 /* Single.json */,
+				118D21A21E69E82B0007B135 /* SingleNegative.json */,
 				118D219F1E69E55D0007B135 /* Twenty.json */,
-				1168F4B61E66124000055E3D /* FireballTrackerTests.swift */,
 				1168F4B81E66124000055E3D /* Info.plist */,
-				118D21951E688FF70007B135 /* FireballModelTests.swift */,
-				118D21981E6895860007B135 /* FireballDataStackTests.swift */,
 				118D219A1E69D9520007B135 /* FireballApiClientTests.swift */,
-				118D219C1E69E3610007B135 /* FireballParserTests.swift */,
-				1194A7011E6B8E4C008DD960 /* FireballListVCTests.swift */,
+				118D21981E6895860007B135 /* FireballDataStackTests.swift */,
 				1194A70E1E6CC552008DD960 /* FireballListDataSourceTests.swift */,
+				1194A7011E6B8E4C008DD960 /* FireballListVCTests.swift */,
+				118D21951E688FF70007B135 /* FireballModelTests.swift */,
+				118D219C1E69E3610007B135 /* FireballParserTests.swift */,
+				1168F4B61E66124000055E3D /* FireballTrackerTests.swift */,
 			);
 			path = FireballTrackerTests;
 			sourceTree = "<group>";
