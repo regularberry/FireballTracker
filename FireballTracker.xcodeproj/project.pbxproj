@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1102DBEE1E6A1F1C009689A3 /* DayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1102DBED1E6A1F1C009689A3 /* DayCell.swift */; };
+		1102DBEE1E6A1F1C009689A3 /* DatetimeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1102DBED1E6A1F1C009689A3 /* DatetimeCell.swift */; };
 		1168F49D1E66124000055E3D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1168F49C1E66124000055E3D /* AppDelegate.swift */; };
 		1168F4A01E66124000055E3D /* FireballTracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1168F49E1E66124000055E3D /* FireballTracker.xcdatamodeld */; };
 		1168F4A21E66124000055E3D /* FireballListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1168F4A11E66124000055E3D /* FireballListVC.swift */; };
@@ -53,7 +53,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1102DBED1E6A1F1C009689A3 /* DayCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayCell.swift; sourceTree = "<group>"; };
+		1102DBED1E6A1F1C009689A3 /* DatetimeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatetimeCell.swift; sourceTree = "<group>"; };
 		1168F4991E66124000055E3D /* FireballTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FireballTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1168F49C1E66124000055E3D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1168F49F1E66124000055E3D /* FireballTracker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FireballTracker.xcdatamodel; sourceTree = "<group>"; };
@@ -140,7 +140,7 @@
 				118D21A41E6B36950007B135 /* meteor@3x.png */,
 				11CE5F881E6B47E500500269 /* ActivityCell.swift */,
 				1168F49C1E66124000055E3D /* AppDelegate.swift */,
-				1102DBED1E6A1F1C009689A3 /* DayCell.swift */,
+				1102DBED1E6A1F1C009689A3 /* DatetimeCell.swift */,
 				118D21A61E6B409D0007B135 /* Extensions.swift */,
 				1168F4D11E661E1F00055E3D /* FireballApiClient.swift */,
 				1172D2841E6775F5004BCA04 /* FireballDataStack.swift */,
@@ -326,7 +326,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1172D2851E6775F5004BCA04 /* FireballDataStack.swift in Sources */,
-				1102DBEE1E6A1F1C009689A3 /* DayCell.swift in Sources */,
+				1102DBEE1E6A1F1C009689A3 /* DatetimeCell.swift in Sources */,
 				11CE5F891E6B47E500500269 /* ActivityCell.swift in Sources */,
 				1168F49D1E66124000055E3D /* AppDelegate.swift in Sources */,
 				1168F4A01E66124000055E3D /* FireballTracker.xcdatamodeld in Sources */,

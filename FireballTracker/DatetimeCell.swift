@@ -1,5 +1,5 @@
 //
-//  DayCell.swift
+//  Datetime.swift
 //  FireballTracker
 //
 //  Created by Sean Berry on 3/3/17.
@@ -9,30 +9,31 @@
 import Foundation
 import UIKit
 
-class DayCell: UITableViewCell {
+/// Displays a datetime in a tableview cell
+class DatetimeCell: UITableViewCell {
     @IBOutlet weak var longDateLabel: UILabel!
     @IBOutlet weak var hourLabel: UILabel!
     @IBOutlet weak var minuteLabel: UILabel!
     
-    var fireball: FireballMO? {
+    var date: Date? {
         didSet {
             updateView()
         }
     }
     
     func updateView() {
-        if let fireball = fireball {
+        if let date = date {
             let formatter = DateFormatter()
             formatter.timeZone = TimeZone(secondsFromGMT: 0)
             
             formatter.dateFormat = "HH"
-            hourLabel.text = formatter.string(from: fireball.swiftDate)
+            hourLabel.text = formatter.string(from: date)
             
             formatter.dateFormat = "mm"
-            minuteLabel.text = formatter.string(from: fireball.swiftDate)
+            minuteLabel.text = formatter.string(from: date)
             
             formatter.dateFormat = "EEEE   dd - MM - yy"
-            longDateLabel.text = formatter.string(from: fireball.swiftDate)
+            longDateLabel.text = formatter.string(from: date)
         } else {
             hourLabel.text = ""
             minuteLabel.text = ""

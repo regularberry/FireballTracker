@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// Spins an activity indicator at the bottom of a table view
 class ActivityCell: UITableViewCell {
     @IBOutlet weak var activityView: UIActivityIndicatorView!
 }

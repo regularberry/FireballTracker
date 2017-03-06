@@ -19,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         return true
     }
     
+    /// Sets custom styles that apply to the entire app.
     func setCustomFonts() {
         let fontName = "Futura"
         if let font = UIFont(name: fontName, size: 20),

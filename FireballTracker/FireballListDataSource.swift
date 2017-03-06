@@ -155,9 +155,9 @@ class FireballListDataSource: NSObject, UITableViewDataSource {
             return activityCell
         }
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "DayCell", for: indexPath) as! DayCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "DatetimeCell", for: indexPath) as! DatetimeCell
         if let fireball = fireball(at: indexPath) {
-            cell.fireball = fireball
+            cell.date = fireball.swiftDate
         }
         return cell
     }
