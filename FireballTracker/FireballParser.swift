@@ -8,6 +8,10 @@
 
 import Foundation
 
+/**
+ - missing: If parameter wasn't found in JSON
+ - parse: If parameter was found but failed to parse correctly
+ */
 enum JSONError: Error {
     case missing(String)
     case parse(String)
@@ -23,17 +27,17 @@ enum LongitudeDirection: String {
     case west = "W"
 }
 
-protocol ParsesFireballs {
-    func fireballs(fromJson: [String: Any]) -> [FireballJSON]
-    func date(from dateStr: String) -> Date? // Needs to be in GMT time zone
-}
-
-struct FireballParser: ParsesFireballs {
+/** 
+ Translates JSON from NASA's Api to local FireballJSON structs
+ https://ssd-api.jpl.nasa.gov/doc/fireball.html
+ 
+ Configured for Api version 1.0
+ */
+struct FireballParser {
     
-    init() {
-        
-    }
-    
+    /**
+     parameter fromJson: JSON of full results - assumed to include field data
+     */
     func fireballs(fromJson: [String: Any]) -> [FireballJSON] {
 
         var fireballs = [FireballJSON]()
@@ -53,6 +57,7 @@ struct FireballParser: ParsesFireballs {
         return fireballs
     }
     
+    /// Creates Date from text - NASA Api has dates in GMT time zone
     func date(from dateStr: String) -> Date? {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
@@ -69,8 +74,8 @@ struct FireballParser: ParsesFireballs {
             return []
         }
         
+        // links up provided fields to array of fireball data
         var fireballDicts = [[String: Any]]()
-        
         for rawFireball in rawFireballs {
             if fields.count == rawFireball.count {
                 var dict = [String: Any]()

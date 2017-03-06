@@ -9,10 +9,14 @@
 import Foundation
 import CoreData
 
+/// Handles persistance and retrieval of local fireball data
 struct FireballDataStack {
     
     let container: NSPersistentContainer
 
+    /**
+        parameter inMemory: setting to true will disable persistence. Useful for testing
+    */
     init(inMemory: Bool = false) {
         self.container = NSPersistentContainer(name: "FireballTracker")
         
@@ -23,10 +27,12 @@ struct FireballDataStack {
         }        
     }
     
+    /// Loads existing local data (if any)
     func loadStore(completion block: @escaping (NSPersistentStoreDescription, Error?) -> Void) {
         container.loadPersistentStores(completionHandler: block)
     }
     
+    /// Returns all existing local fireballs (if any)
     func allExistingFireballs() -> [FireballMO] {
         let fetch = NSFetchRequest<FireballMO>(entityName: "Fireball")
         fetch.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
@@ -39,6 +45,7 @@ struct FireballDataStack {
         return []
     }
     
+    /// Saves FireballJSON fireballs to be retrieved later
     func save(jsonFireballs: [FireballJSON]) {
         for fireball in jsonFireballs {
             if isUnique(fireball: fireball) {
@@ -50,7 +57,7 @@ struct FireballDataStack {
             }
         }
     }
-    
+    /// Deletes all existing fireballs and saves the new ones afterwards
     func replaceAllFireballs(with jsonFireballs: [FireballJSON]) {
         let fireballs = allExistingFireballs()
         for fireball in fireballs {

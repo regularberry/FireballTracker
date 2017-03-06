@@ -15,7 +15,6 @@
 		1168F4A71E66124000055E3D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1168F4A51E66124000055E3D /* Main.storyboard */; };
 		1168F4A91E66124000055E3D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1168F4A81E66124000055E3D /* Assets.xcassets */; };
 		1168F4AC1E66124000055E3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1168F4AA1E66124000055E3D /* LaunchScreen.storyboard */; };
-		1168F4B71E66124000055E3D /* FireballTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1168F4B61E66124000055E3D /* FireballTrackerTests.swift */; };
 		1168F4C21E66124000055E3D /* FireballTrackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1168F4C11E66124000055E3D /* FireballTrackerUITests.swift */; };
 		1168F4D01E66174100055E3D /* FireballModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1168F4CF1E66174100055E3D /* FireballModels.swift */; };
 		1168F4D21E661E1F00055E3D /* FireballApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1168F4D11E661E1F00055E3D /* FireballApiClient.swift */; };
@@ -64,7 +63,6 @@
 		1168F4AB1E66124000055E3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1168F4AD1E66124000055E3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1168F4B21E66124000055E3D /* FireballTrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FireballTrackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		1168F4B61E66124000055E3D /* FireballTrackerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireballTrackerTests.swift; sourceTree = "<group>"; };
 		1168F4B81E66124000055E3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1168F4BD1E66124000055E3D /* FireballTrackerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FireballTrackerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1168F4C11E66124000055E3D /* FireballTrackerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireballTrackerUITests.swift; sourceTree = "<group>"; };
@@ -170,7 +168,6 @@
 				1194A7011E6B8E4C008DD960 /* FireballListVCTests.swift */,
 				118D21951E688FF70007B135 /* FireballModelTests.swift */,
 				118D219C1E69E3610007B135 /* FireballParserTests.swift */,
-				1168F4B61E66124000055E3D /* FireballTrackerTests.swift */,
 			);
 			path = FireballTrackerTests;
 			sourceTree = "<group>";
@@ -347,7 +344,6 @@
 				118D21961E688FF70007B135 /* FireballModelTests.swift in Sources */,
 				1194A70F1E6CC552008DD960 /* FireballListDataSourceTests.swift in Sources */,
 				118D219D1E69E3610007B135 /* FireballParserTests.swift in Sources */,
-				1168F4B71E66124000055E3D /* FireballTrackerTests.swift in Sources */,
 				118D21991E6895860007B135 /* FireballDataStackTests.swift in Sources */,
 				1194A7021E6B8E4C008DD960 /* FireballListVCTests.swift in Sources */,
 			);

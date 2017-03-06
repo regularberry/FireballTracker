@@ -9,6 +9,9 @@
 import UIKit
 
 extension CGRect {
+    /**
+        Calculates local center, aka ignores position of rect.
+    */
     var localCenter: CGPoint {
         return CGPoint(x: self.width/2, y: self.height/2)
     }

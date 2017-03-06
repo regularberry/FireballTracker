@@ -9,6 +9,7 @@
 import Foundation
 import CoreLocation
 
+/// Fireball data converted from JSON
 struct FireballJSON {
     let date: Date
     let latitude: Double
@@ -21,6 +22,7 @@ struct FireballJSON {
     }
 }
 
+/// Core Data class of the Fireball entity
 extension FireballMO {
     var coordinate: CLLocationCoordinate2D {
         return CLLocationCoordinate2D(latitude: latitude, longitude: longitude)

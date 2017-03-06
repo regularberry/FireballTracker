@@ -10,10 +10,18 @@ import Foundation
 import UIKit
 import CoreData
 
+/// completelyConsumed: Thrown when the api isn't returning anymore fireballs before a certain date.
 enum DataSourceError: Error {
     case completelyConsumed
 }
 
+/** 
+ Combines the local data stack with fetching new data from the api.
+ 
+ parameter fetchedDelegate: Receive updates to the local fireball data store
+ parameter dataStack: defaults to FireballDataStack(), used for local storage
+ parameter apiClient: defaults to FireballApiClient(), used to get new data from the network
+ */
 class FireballListDataSource: NSObject, UITableViewDataSource {
     
     typealias LoadDataHandler = (Error?) -> Void
@@ -30,6 +38,7 @@ class FireballListDataSource: NSObject, UITableViewDataSource {
         self.apiClient = apiClient
     }
     
+    /// Sets up and retrieves existing local data
     func loadData(completionHandler: @escaping LoadDataHandler) {
         dataStack.loadStore(completion: {(description, error) in
             guard error == nil else {
@@ -48,7 +57,7 @@ class FireballListDataSource: NSObject, UITableViewDataSource {
         })
     }
     
-    func loadFetchController() {
+    private func loadFetchController() {
         let fetch = NSFetchRequest<FireballMO>(entityName: "Fireball")
         fetch.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
         
@@ -56,6 +65,7 @@ class FireballListDataSource: NSObject, UITableViewDataSource {
         self.fetchedResultsController?.delegate = self.fetchedDelegate
     }
     
+    /// Refreshes local data - used for testing. Please use the fetchedDelegate for your table view.
     func reloadData() {
         do {
             try self.fetchedResultsController?.performFetch()
@@ -64,6 +74,7 @@ class FireballListDataSource: NSObject, UITableViewDataSource {
         }
     }
     
+    /// Grabs the newest fireballs from the api and REPLACES local data
     func getFreshData(completionHandler: @escaping LoadDataHandler) {
         apiClient.getLatestFireballs(completion: { (jsonFireballs, error) in
             
@@ -77,6 +88,7 @@ class FireballListDataSource: NSObject, UITableViewDataSource {
         })
     }
     
+    /// Grabs older fireballs and APPENDS local data
     func getOlderData(completionHandler: @escaping LoadDataHandler) {
         guard let oldestDate = getOldestDate() else {
             return
@@ -99,6 +111,7 @@ class FireballListDataSource: NSObject, UITableViewDataSource {
         })
     }
     
+    /// Returns: Oldest date from local fireballs
     func getOldestDate() -> Date? {
         let fireballs = dataStack.allExistingFireballs()
         guard let last = fireballs.last else {
@@ -107,6 +120,7 @@ class FireballListDataSource: NSObject, UITableViewDataSource {
         return last.swiftDate
     }
     
+    /// Do I have any local fireballs?
     func noFireballs() -> Bool {
         guard let fetched = fetchedResultsController?.fetchedObjects else {
             print("No fireballs? We haven't tried to fetch them yet.")
@@ -115,6 +129,7 @@ class FireballListDataSource: NSObject, UITableViewDataSource {
         return fetched.count == 0
     }
     
+    /// Returns; Fireball at specified row. Fireballs are sorted by date ascending:false
     func fireball(at indexPath: IndexPath) -> FireballMO? {
         if let controller = fetchedResultsController {
             return controller.object(at: indexPath)

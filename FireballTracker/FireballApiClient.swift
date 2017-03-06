@@ -8,30 +8,46 @@
 
 import Foundation
 
+/**
+ Grabs data from NASA's fireball API which is documented here: https://ssd-api.jpl.nasa.gov/doc/fireball.html
+ */
 struct FireballApiClient {
     
     typealias FireballCompletion = ([FireballJSON], Error?) -> ()
     
     let chunkSize: Int
     let baseUrlStr: String
-    let parser: ParsesFireballs
+    let parser: FireballParser
     
-    init(parser: ParsesFireballs = FireballParser(), chunkSize: Int = 40) {
+    /**
+     parameter parser: Defaults to FireballParser(), used to parse results from network call
+     parameter chunkSize: # of results to grab from api on each call
+     */
+    init(parser: FireballParser = FireballParser(), chunkSize: Int = 40) {
         self.parser = parser
         self.chunkSize = chunkSize
         self.baseUrlStr = "https://ssd-api.jpl.nasa.gov/fireball.api?req-loc=true&limit=\(chunkSize)"
     }
     
+    /**
+     Grabs # of fireballs that happened before the given date. # determined by initial chunkSize setting.
+     
+     parameter beforeDate: returns earlier fireballs, NOT including this exact datetime. Yes it looks at the time as well.
+     parameter completion: If any fireballs found, return as FireballJSON array, otherwise return the error.
+     */
     func getFireballs(beforeDate: Date, completion: @escaping FireballCompletion) {
         let formatter = DateFormatter()
-        formatter.dateFormat = "YYYY-MM-dd HH:mm:ss"
+        formatter.dateFormat = "YYYY-MM-dd'T'HH:mm:ss"
         let dateStr = formatter.string(from: beforeDate)
-        let split = dateStr.components(separatedBy: " ")
-        let dateUrlField = "\(split[0])T\(split[1])"
-        let url = URL(string: "\(baseUrlStr)&date-max=\(dateUrlField)")!
+        let url = URL(string: "\(baseUrlStr)&date-max=\(dateStr)")!
         getFireballs(url: url, completion: completion)
     }
     
+    /**
+     Grabs # newest fireballs from api. # determined by initial chunkSize setting.
+     
+     parameter completion: If any fireballs found, return as FireballJSON array, otherwise return the error.
+     */
     func getLatestFireballs(completion: @escaping FireballCompletion) {
         getFireballs(url: URL(string: baseUrlStr)!, completion: completion)
     }

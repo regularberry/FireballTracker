@@ -9,6 +9,7 @@
 import UIKit
 import MapKit
 
+/// Displays the location of atmospheric impact of a fireball on a Map
 class FireballLocationVC: UIViewController, MKMapViewDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
@@ -30,7 +31,7 @@ class FireballLocationVC: UIViewController, MKMapViewDelegate {
         meteorImageView.removeFromSuperview()
     }
     
-    func configureMapView() {
+    private func configureMapView() {
         if let fireball = fireball {
             mapView.region = MKCoordinateRegionForMapRect(MKMapRectWorld)
             mapView.centerCoordinate = fireball.coordinate
@@ -51,6 +52,7 @@ class FireballLocationVC: UIViewController, MKMapViewDelegate {
         return view
     }
     
+    /// Automatically launches the meteor animation on first load
     func mapViewDidFinishRenderingMap(_ mapView: MKMapView, fullyRendered: Bool) {
         guard !initialMapLoad else {
             return
@@ -59,6 +61,7 @@ class FireballLocationVC: UIViewController, MKMapViewDelegate {
         launchMeteor()
     }
     
+    /// Animation that launches meteor from top right location to the center
     @IBAction func launchMeteor() {
         guard !meteorAnimating else {
             return

@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 
+/// Displays a table of fireballs, segues to FireballLocationVC
 class FireballListVC: UITableViewController, NSFetchedResultsControllerDelegate {
     
     lazy var fireballDataSource: FireballListDataSource = FireballListDataSource(fetchedDelegate: self)
@@ -31,6 +32,7 @@ class FireballListVC: UITableViewController, NSFetchedResultsControllerDelegate 
         })
     }
     
+    /// Used at top of table view when they pull to refresh
     func getFreshData() {
         fireballDataSource.getFreshData(completionHandler: { (error) in
             self.refreshControl?.endRefreshing()
@@ -38,6 +40,7 @@ class FireballListVC: UITableViewController, NSFetchedResultsControllerDelegate 
         })
     }
     
+    /// Used at bottom of table view when they're scrolling all the way down
     func getOlderData() {
         guard fireballDataSource.possiblyMoreData else {
             return
@@ -48,7 +51,7 @@ class FireballListVC: UITableViewController, NSFetchedResultsControllerDelegate 
         })
     }
     
-    func processDataError(error: Error?) {
+    private func processDataError(error: Error?) {
         guard let error = error else {
             return
         }
@@ -61,7 +64,7 @@ class FireballListVC: UITableViewController, NSFetchedResultsControllerDelegate 
         }
     }
     
-    func hideBottomActivityCell() {
+    private func hideBottomActivityCell() {
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
@@ -83,6 +86,7 @@ class FireballListVC: UITableViewController, NSFetchedResultsControllerDelegate 
         }
     }
 
+    /// Enables infinite scrolling
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {        
         // Auto-retrieve more data when user gets to the bottom of the table view
         if indexPath.row == fireballDataSource.numberOfRows() - 1 {
