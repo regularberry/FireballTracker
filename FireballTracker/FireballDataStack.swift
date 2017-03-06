@@ -9,11 +9,11 @@
 import Foundation
 import CoreData
 
-public struct FireballDataStack {
+struct FireballDataStack {
     
     let container: NSPersistentContainer
 
-    public init(inMemory: Bool = false) {
+    init(inMemory: Bool = false) {
         self.container = NSPersistentContainer(name: "FireballTracker")
         
         if inMemory {
@@ -23,11 +23,11 @@ public struct FireballDataStack {
         }        
     }
     
-    public func loadStore(completion block: @escaping (NSPersistentStoreDescription, Error?) -> Void) {
+    func loadStore(completion block: @escaping (NSPersistentStoreDescription, Error?) -> Void) {
         container.loadPersistentStores(completionHandler: block)
     }
     
-    public func allExistingFireballs() -> [FireballMO] {
+    func allExistingFireballs() -> [FireballMO] {
         let fetch = NSFetchRequest<FireballMO>(entityName: "Fireball")
         fetch.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
         do {
@@ -39,7 +39,7 @@ public struct FireballDataStack {
         return []
     }
     
-    public func save(jsonFireballs: [FireballJSON]) {
+    func save(jsonFireballs: [FireballJSON]) {
         for fireball in jsonFireballs {
             if isUnique(fireball: fireball) {
                 let ballMO = NSEntityDescription.insertNewObject(forEntityName: "Fireball", into: container.viewContext) as! FireballMO
@@ -51,7 +51,7 @@ public struct FireballDataStack {
         }
     }
     
-    public func replaceAllFireballs(with jsonFireballs: [FireballJSON]) {
+    func replaceAllFireballs(with jsonFireballs: [FireballJSON]) {
         let fireballs = allExistingFireballs()
         for fireball in fireballs {
             container.viewContext.delete(fireball)

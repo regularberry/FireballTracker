@@ -8,21 +8,21 @@
 
 import Foundation
 
-public struct FireballApiClient {
+struct FireballApiClient {
     
-    public typealias FireballCompletion = ([FireballJSON], Error?) -> ()
+    typealias FireballCompletion = ([FireballJSON], Error?) -> ()
     
     let chunkSize: Int
     let baseUrlStr: String
     let parser: ParsesFireballs
     
-    public init(parser: ParsesFireballs = FireballParser(), chunkSize: Int = 40) {
+    init(parser: ParsesFireballs = FireballParser(), chunkSize: Int = 40) {
         self.parser = parser
         self.chunkSize = chunkSize
         self.baseUrlStr = "https://ssd-api.jpl.nasa.gov/fireball.api?req-loc=true&limit=\(chunkSize)"
     }
     
-    public func getFireballs(beforeDate: Date, completion: @escaping FireballCompletion) {
+    func getFireballs(beforeDate: Date, completion: @escaping FireballCompletion) {
         let formatter = DateFormatter()
         formatter.dateFormat = "YYYY-MM-dd HH:mm:ss"
         let dateStr = formatter.string(from: beforeDate)
@@ -32,7 +32,7 @@ public struct FireballApiClient {
         getFireballs(url: url, completion: completion)
     }
     
-    public func getLatestFireballs(completion: @escaping FireballCompletion) {
+    func getLatestFireballs(completion: @escaping FireballCompletion) {
         getFireballs(url: URL(string: baseUrlStr)!, completion: completion)
     }
     

@@ -23,18 +23,18 @@ enum LongitudeDirection: String {
     case west = "W"
 }
 
-public protocol ParsesFireballs {
+protocol ParsesFireballs {
     func fireballs(fromJson: [String: Any]) -> [FireballJSON]
     func date(from dateStr: String) -> Date? // Needs to be in GMT time zone
 }
 
-public struct FireballParser: ParsesFireballs {
+struct FireballParser: ParsesFireballs {
     
-    public init() {
+    init() {
         
     }
     
-    public func fireballs(fromJson: [String: Any]) -> [FireballJSON] {
+    func fireballs(fromJson: [String: Any]) -> [FireballJSON] {
 
         var fireballs = [FireballJSON]()
         
@@ -53,7 +53,7 @@ public struct FireballParser: ParsesFireballs {
         return fireballs
     }
     
-    public func date(from dateStr: String) -> Date? {
+    func date(from dateStr: String) -> Date? {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)

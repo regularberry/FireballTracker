@@ -26,6 +26,7 @@ class FireballListVCTests: XCTestCase {
     
     func test_thatListVC_loadsView() {
         // GIVEN: a list VC
+        // listVC
         
         // WHEN: it's told to load its view
         _ = listVC.view

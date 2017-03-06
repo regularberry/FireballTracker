@@ -55,12 +55,15 @@ class FireballListVC: UITableViewController, NSFetchedResultsControllerDelegate 
         
         switch error {
         case DataSourceError.completelyConsumed:
-            // Hide the bottom activity cell
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
+            hideBottomActivityCell()
         case let error:
             print(error.localizedDescription)
+        }
+    }
+    
+    func hideBottomActivityCell() {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
         }
     }
     

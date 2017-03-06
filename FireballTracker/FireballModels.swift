@@ -9,30 +9,24 @@
 import Foundation
 import CoreLocation
 
-public struct FireballJSON {
-    public let date: Date
-    public let latitude: Double
-    public let longitude: Double
+struct FireballJSON {
+    let date: Date
+    let latitude: Double
+    let longitude: Double
     
-    public init(date: Date, latitude: Double, longitude: Double) {
+    init(date: Date, latitude: Double, longitude: Double) {
         self.date = date
         self.latitude = latitude
         self.longitude = longitude
     }
 }
 
-public extension FireballMO {
-    public var coordinate: CLLocationCoordinate2D {
+extension FireballMO {
+    var coordinate: CLLocationCoordinate2D {
         return CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
     }
     
-    public var swiftDate: Date {
+    var swiftDate: Date {
         return date as! Date
-    }
-    
-    var dateStr: String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "MM/dd/YYYY"
-        return formatter.string(from: date as! Date)
     }
 }

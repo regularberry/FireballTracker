@@ -177,12 +177,9 @@
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
-                                    <outlet property="bottomContainerView" destination="Ka8-Mv-NSG" id="Hu6-PQ-6id"/>
                                     <outlet property="hourLabel" destination="Em7-61-ln8" id="21Q-OH-uia"/>
-                                    <outlet property="leftContainerView" destination="b8n-9f-9Gl" id="5l0-oK-FiM"/>
                                     <outlet property="longDateLabel" destination="Jdx-aK-L8x" id="xfD-JK-BiA"/>
                                     <outlet property="minuteLabel" destination="Bnc-9r-EmQ" id="6bl-j5-OE9"/>
-                                    <outlet property="rightContainerView" destination="ycD-yX-bAB" id="DR9-EA-dpi"/>
                                     <segue destination="JEX-9P-axG" kind="show" identifier="showDetail" id="xhg-zT-V4g"/>
                                 </connections>
                             </tableViewCell>

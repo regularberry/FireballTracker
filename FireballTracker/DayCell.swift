@@ -14,10 +14,6 @@ class DayCell: UITableViewCell {
     @IBOutlet weak var hourLabel: UILabel!
     @IBOutlet weak var minuteLabel: UILabel!
     
-    @IBOutlet weak var rightContainerView: UIView!
-    @IBOutlet weak var leftContainerView: UIView!
-    @IBOutlet weak var bottomContainerView: UIView!
-    
     var fireball: FireballMO? {
         didSet {
             updateView()

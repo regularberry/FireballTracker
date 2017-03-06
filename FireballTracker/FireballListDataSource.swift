@@ -16,7 +16,7 @@ enum DataSourceError: Error {
 
 class FireballListDataSource: NSObject, UITableViewDataSource {
     
-    public typealias LoadDataHandler = (Error?) -> Void
+    typealias LoadDataHandler = (Error?) -> Void
     
     let dataStack: FireballDataStack
     let apiClient: FireballApiClient
