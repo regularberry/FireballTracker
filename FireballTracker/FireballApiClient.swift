@@ -8,7 +8,7 @@
 
 import Foundation
 
-typealias FireballCompletion = ([FireballJSON], Error?) -> ()
+typealias FireballCompletion = ([FireballJSON], Error?) -> Void
 
 /**
  Grabs data from NASA's fireball API which is documented here: https://ssd-api.jpl.nasa.gov/doc/fireball.html
@@ -36,7 +36,7 @@ struct ChunkApiClient: FireballApiClient {
     }
     
     /**
-     Grabs # of fireballs that happened before the given date. # determined by initial chunkSize setting.
+     Grabs # of fireballs that happened before the given date.
      
      parameter beforeDate: returns earlier fireballs, NOT including this exact datetime. Yes it looks at the time as well.
      parameter completion: If any fireballs found, return as FireballJSON array, otherwise return the error.
@@ -50,7 +50,7 @@ struct ChunkApiClient: FireballApiClient {
     }
     
     /**
-     Grabs # newest fireballs from api. # determined by initial chunkSize setting.
+     Grabs # newest fireballs from api
      
      parameter completion: If any fireballs found, return as FireballJSON array, otherwise return the error.
      */
@@ -60,7 +60,7 @@ struct ChunkApiClient: FireballApiClient {
     
     private func getFireballs(url: URL, completion: @escaping FireballCompletion) {
         let task = URLSession.shared.dataTask(with: url, completionHandler: {
-            (data:Data?, response:URLResponse?, error:Error?) -> Void in
+            (data: Data?, _, error: Error?) -> Void in
             
             if let error = error {
                 completion([], error)
@@ -68,7 +68,7 @@ struct ChunkApiClient: FireballApiClient {
             }
             
             do {
-                let json = try JSONSerialization.jsonObject(with: data!, options: []) as! [String : Any]
+                let json = try JSONSerialization.jsonObject(with: data!, options: []) as? [String : Any] ?? [:]
                 completion(self.parser.fireballs(fromJson: json), nil)
             } catch let error {
                 completion([], error)

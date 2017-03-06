@@ -40,7 +40,7 @@ class FireballListDataSource: NSObject, UITableViewDataSource {
     
     /// Sets up and retrieves existing local data
     func loadData(completionHandler: @escaping LoadDataHandler) {
-        dataStack.loadStore(completion: {(description, error) in
+        dataStack.loadStore(completion: {(_, error) in
             guard error == nil else {
                 completionHandler(error!)
                 return

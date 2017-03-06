@@ -87,7 +87,7 @@ class FireballLocationVC: UIViewController, MKMapViewDelegate {
             self.meteorImageView.center = destination
             self.meteorImageView.alpha = 0.0
     
-        }, completion: { (completed) in
+        }, completion: { _ in
             self.meteorImageView.removeFromSuperview()
             self.meteorAnimating = false
             self.mapView.isScrollEnabled = true
