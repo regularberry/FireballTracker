@@ -31,7 +31,6 @@ The table view controller: **FireballListVC** is straight forward. I wanted to c
 
 # Criticisms:
 * The unit tests use the live api client, a stub should be created so unit tests that rely on a network call don't fail if the network isn't working.
-* Doesn't inform user about network errors, only prints to console.
 
 # Credits:
 * Meteor art by momentbloom on https://www.vecteezy.com/vector-art/96764-meteor-shower-vector-illustration [Illustrations by Vecteezy.com](https://www.vecteezy.com)

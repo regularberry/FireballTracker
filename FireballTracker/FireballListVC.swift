@@ -60,7 +60,15 @@ class FireballListVC: UITableViewController, NSFetchedResultsControllerDelegate 
         case DataSourceError.completelyConsumed:
             hideBottomActivityCell()
         case let error:
-            print(error.localizedDescription)
+            displayErrorToUser(error: error)
+        }
+    }
+    
+    private func displayErrorToUser(error: Error) {
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: "Data Error", message: error.localizedDescription, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: false, completion: nil)
         }
     }
     
