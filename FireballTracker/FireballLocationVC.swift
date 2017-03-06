@@ -17,12 +17,14 @@ class FireballLocationVC: UIViewController, MKMapViewDelegate {
     @IBOutlet weak var replayBarButtonItem: UIBarButtonItem!
     
     var fireball: FireballMO?
+    var annotation: MKAnnotation?
+    
+    var initialMapLoad: Bool = false
     var meteorAnimating: Bool = false {
         didSet {
             replayBarButtonItem.isEnabled = !meteorAnimating
         }
     }
-    var initialMapLoad: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +42,7 @@ class FireballLocationVC: UIViewController, MKMapViewDelegate {
             point.coordinate = fireball.coordinate
             mapView.addAnnotation(point)
             mapView.delegate = self
+            self.annotation = point
         }
     }
     
@@ -66,10 +69,11 @@ class FireballLocationVC: UIViewController, MKMapViewDelegate {
         guard !meteorAnimating else {
             return
         }
-        guard let fireball = self.fireball else {
+        guard fireball != nil else {
             return
         }
         
+        let destination = getMeteorDestination()
         mapView.isScrollEnabled = false
         meteorAnimating = true
         meteorImageView.alpha = 1.0
@@ -80,14 +84,22 @@ class FireballLocationVC: UIViewController, MKMapViewDelegate {
         UIView.animate(withDuration: 2.0, animations: {
             let scale: CGFloat = 0.25
             self.meteorImageView.transform = CGAffineTransform(scaleX: scale, y: scale)
-            self.meteorImageView.center = self.mapView.bounds.localCenter
+            self.meteorImageView.center = destination
             self.meteorImageView.alpha = 0.0
-            self.mapView.centerCoordinate = fireball.coordinate
     
         }, completion: { (completed) in
             self.meteorImageView.removeFromSuperview()
             self.meteorAnimating = false
             self.mapView.isScrollEnabled = true
         })
+    }
+    
+    private func getMeteorDestination() -> CGPoint {
+        if let annotation = annotation {
+            if let view = mapView.view(for: annotation) {
+                return view.center
+            }
+        }
+        return mapView.bounds.localCenter
     }
 }

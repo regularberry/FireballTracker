@@ -30,7 +30,6 @@ The table view controller: **FireballListVC** is straight forward. I wanted to c
 **FireballListVC** segues to **FireballLocationVC** which creates a MKMapView and animates a meteor flying to the correct location on the map. I did this by disabling scrolling while the animation is playing and directing it to the center.
 
 # Criticisms:
-* With this meteor animation implementation, if a location is near the edge of the map and thus can't be centered, the meteor will still fly to the center. A literal edge case.
 * The unit tests use the live api client, a stub should be created so unit tests that rely on a network call don't fail if the network isn't working.
 * Doesn't inform user about network errors, only prints to console.
 
