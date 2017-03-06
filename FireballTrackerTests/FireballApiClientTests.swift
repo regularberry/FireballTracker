@@ -23,7 +23,7 @@ class FireballApiClientTests: XCTestCase {
     
     func test_thatApiClient_completesLatestCallWithoutError() {
         // GIVEN: an api client
-        let client = FireballApiClient()
+        let client = ChunkApiClient()
         
         // WHEN: we ask the server for the latest fireballs
         let latestCompleted = expectation(description: "LatestFireballs")
@@ -39,7 +39,7 @@ class FireballApiClientTests: XCTestCase {
     
     func test_thatApiClient_completesBeforeDateCallWithoutError() {
         // GIVEN: an api client
-        let client = FireballApiClient()
+        let client = ChunkApiClient()
         
         // WHEN: we ask the server for fireballs before now
         let beforeCompleted = expectation(description: "FireballAfterDate")
@@ -56,7 +56,7 @@ class FireballApiClientTests: XCTestCase {
     func test_thatApiClient_grabsFireballCountFromChunkSize() {
         // GIVEN: an api client, parser and chunk size
         let chunkSize = 10
-        let client = FireballApiClient(parser: FireballParser(), chunkSize: chunkSize)
+        let client = ChunkApiClient(parser: FireballParser(), chunkSize: chunkSize)
         
         // WHEN: we ask the server for the latest fireballs
         let latestCompleted = expectation(description: "LatestFireballs")
@@ -77,7 +77,7 @@ class FireballApiClientTests: XCTestCase {
         // GIVEN: an api client, parser and chunk size and a date
         let chunkSize = 30
         let date = Date()
-        let client = FireballApiClient(parser: FireballParser(), chunkSize: chunkSize)
+        let client = ChunkApiClient(parser: FireballParser(), chunkSize: chunkSize)
         
         // WHEN: we ask the server for the fireballs before date
         let beforeCompleted = expectation(description: "FireballsBefore")
@@ -97,7 +97,7 @@ class FireballApiClientTests: XCTestCase {
         // GIVEN: an api client, parser and chunk size and a date
         let chunkSize = 100
         let date = Date(timeIntervalSince1970: 0)
-        let client = FireballApiClient(parser: FireballParser(), chunkSize: chunkSize)
+        let client = ChunkApiClient(parser: FireballParser(), chunkSize: chunkSize)
         
         // WHEN: we ask the server for the fireballs before date
         let beforeCompleted = expectation(description: "FireballsBefore")

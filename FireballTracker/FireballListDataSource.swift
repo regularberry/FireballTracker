@@ -32,7 +32,7 @@ class FireballListDataSource: NSObject, UITableViewDataSource {
     var fetchedResultsController: NSFetchedResultsController<FireballMO>?
     var possiblyMoreData = true
     
-    init(fetchedDelegate: NSFetchedResultsControllerDelegate? = nil, dataStack: FireballDataStack = FireballDataStack(), apiClient: FireballApiClient = FireballApiClient()) {
+    init(fetchedDelegate: NSFetchedResultsControllerDelegate? = nil, dataStack: FireballDataStack = FireballDataStack(), apiClient: FireballApiClient = ChunkApiClient()) {
         self.fetchedDelegate = fetchedDelegate
         self.dataStack = dataStack
         self.apiClient = apiClient

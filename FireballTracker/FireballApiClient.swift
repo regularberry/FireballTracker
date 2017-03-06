@@ -8,12 +8,18 @@
 
 import Foundation
 
+typealias FireballCompletion = ([FireballJSON], Error?) -> ()
+
 /**
  Grabs data from NASA's fireball API which is documented here: https://ssd-api.jpl.nasa.gov/doc/fireball.html
  */
-struct FireballApiClient {
-    
-    typealias FireballCompletion = ([FireballJSON], Error?) -> ()
+protocol FireballApiClient {
+    func getFireballs(beforeDate: Date, completion: @escaping FireballCompletion)
+    func getLatestFireballs(completion: @escaping FireballCompletion)
+}
+
+/// Implementation of FireballApiClient that lets you specify how many fireballs to get at a time
+struct ChunkApiClient: FireballApiClient {
     
     let chunkSize: Int
     let baseUrlStr: String

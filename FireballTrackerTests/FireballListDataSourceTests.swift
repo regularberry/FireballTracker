@@ -15,7 +15,7 @@ class FireballListDataSourceTests: XCTestCase {
     override func setUp() {
         super.setUp()
         let stack = FireballDataStack(inMemory: true)
-        let client = FireballApiClient(chunkSize: 1)
+        let client = FakeApiClient()
         dataSource = FireballListDataSource(dataStack: stack, apiClient: client)
         
         let loadExpectation = expectation(description: "Load Data")

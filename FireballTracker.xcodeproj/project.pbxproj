@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1102DBEE1E6A1F1C009689A3 /* DatetimeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1102DBED1E6A1F1C009689A3 /* DatetimeCell.swift */; };
+		111F58101E6E0FAE00B0DF10 /* FakeApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 111F580F1E6E0FAE00B0DF10 /* FakeApiClient.swift */; };
 		1168F49D1E66124000055E3D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1168F49C1E66124000055E3D /* AppDelegate.swift */; };
 		1168F4A01E66124000055E3D /* FireballTracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1168F49E1E66124000055E3D /* FireballTracker.xcdatamodeld */; };
 		1168F4A21E66124000055E3D /* FireballListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1168F4A11E66124000055E3D /* FireballListVC.swift */; };
@@ -55,6 +56,7 @@
 
 /* Begin PBXFileReference section */
 		1102DBED1E6A1F1C009689A3 /* DatetimeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatetimeCell.swift; sourceTree = "<group>"; };
+		111F580F1E6E0FAE00B0DF10 /* FakeApiClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeApiClient.swift; sourceTree = "<group>"; };
 		1168F4991E66124000055E3D /* FireballTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FireballTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1168F49C1E66124000055E3D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1168F49F1E66124000055E3D /* FireballTracker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FireballTracker.xcdatamodel; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 				11926E6B1E6DF46900163332 /* FireballLocationVCTests.swift */,
 				118D21951E688FF70007B135 /* FireballModelTests.swift */,
 				118D219C1E69E3610007B135 /* FireballParserTests.swift */,
+				111F580F1E6E0FAE00B0DF10 /* FakeApiClient.swift */,
 			);
 			path = FireballTrackerTests;
 			sourceTree = "<group>";
@@ -351,6 +354,7 @@
 				1194A70F1E6CC552008DD960 /* FireballListDataSourceTests.swift in Sources */,
 				118D219D1E69E3610007B135 /* FireballParserTests.swift in Sources */,
 				118D21991E6895860007B135 /* FireballDataStackTests.swift in Sources */,
+				111F58101E6E0FAE00B0DF10 /* FakeApiClient.swift in Sources */,
 				1194A7021E6B8E4C008DD960 /* FireballListVCTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
