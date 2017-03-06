@@ -20,7 +20,7 @@ enum DataSourceError: Error {
  
  parameter fetchedDelegate: Receive updates to the local fireball data store
  parameter dataStack: defaults to FireballDataStack(), used for local storage
- parameter apiClient: defaults to FireballApiClient(), used to get new data from the network
+ parameter apiClient: defaults to ChunkApiClient(), used to get new data from the network
  */
 class FireballListDataSource: NSObject, UITableViewDataSource {
     
