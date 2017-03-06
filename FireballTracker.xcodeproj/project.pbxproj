@@ -29,6 +29,7 @@
 		118D21A51E6B36950007B135 /* meteor@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 118D21A41E6B36950007B135 /* meteor@3x.png */; };
 		118D21A71E6B409D0007B135 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118D21A61E6B409D0007B135 /* Extensions.swift */; };
 		11926E6C1E6DF46900163332 /* FireballLocationVCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11926E6B1E6DF46900163332 /* FireballLocationVCTests.swift */; };
+		11926E6D1E6DF98F00163332 /* FireballApiClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118D219A1E69D9520007B135 /* FireballApiClientTests.swift */; };
 		1194A7021E6B8E4C008DD960 /* FireballListVCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1194A7011E6B8E4C008DD960 /* FireballListVCTests.swift */; };
 		1194A7071E6B962F008DD960 /* FireballListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1194A7061E6B962F008DD960 /* FireballListDataSource.swift */; };
 		1194A70F1E6CC552008DD960 /* FireballListDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1194A70E1E6CC552008DD960 /* FireballListDataSourceTests.swift */; };
@@ -344,6 +345,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11926E6D1E6DF98F00163332 /* FireballApiClientTests.swift in Sources */,
 				11926E6C1E6DF46900163332 /* FireballLocationVCTests.swift in Sources */,
 				118D21961E688FF70007B135 /* FireballModelTests.swift in Sources */,
 				1194A70F1E6CC552008DD960 /* FireballListDataSourceTests.swift in Sources */,
