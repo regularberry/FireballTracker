@@ -32,7 +32,7 @@ class FireballListVCTests: XCTestCase {
         _ = listVC.view
         
         // THEN: it has a view
-        XCTAssert(listVC.view != nil)
+        XCTAssertNotNil(listVC.view)
     }
     
 }
