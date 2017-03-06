@@ -39,7 +39,7 @@ struct ChunkApiClient: FireballApiClient {
      Grabs # of fireballs that happened before the given date.
      
      parameter beforeDate: returns earlier fireballs, NOT including this exact datetime. Yes it looks at the time as well.
-     parameter completion: If any fireballs found, return as FireballJSON array, otherwise return the error.
+     parameter completion: returns parsed fireballs as FireballJSON array
      */
     func getFireballs(beforeDate: Date, completion: @escaping FireballCompletion) {
         let formatter = DateFormatter()
@@ -52,7 +52,7 @@ struct ChunkApiClient: FireballApiClient {
     /**
      Grabs # newest fireballs from api
      
-     parameter completion: If any fireballs found, return as FireballJSON array, otherwise return the error.
+     parameter completion: returns parsed fireballs as FireballJSON array
      */
     func getLatestFireballs(completion: @escaping FireballCompletion) {
         getFireballs(url: URL(string: baseUrlStr)!, completion: completion)

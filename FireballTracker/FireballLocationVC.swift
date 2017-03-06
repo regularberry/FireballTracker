@@ -64,7 +64,7 @@ class FireballLocationVC: UIViewController, MKMapViewDelegate {
         launchMeteor()
     }
     
-    /// Animation that launches meteor from top right location to the center
+    /// Animation that launches meteor from top right location to the annotation view
     @IBAction func launchMeteor() {
         guard !meteorAnimating else {
             return
